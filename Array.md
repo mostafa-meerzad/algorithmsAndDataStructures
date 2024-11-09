@@ -66,12 +66,81 @@ import java.util.Arrays;
 
 public class LearningArray {
 
-   public static void main(String[] args) {
-      int[] numbers = {10, 20, 30};
-      // getting the number of elements
-      System.out.println(numbers.length);
-      System.out.println(Arrays.toString(numbers));
-   }
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 30};
+        // getting the number of elements
+        System.out.println(numbers.length);
+        System.out.println(Arrays.toString(numbers));
+    }
 }
 
 ```
+
+## Exercise:1 Create a Dynamic Array
+
+Implement an Array Class that takes the length of the array as an argument, then we can insert new elements, remove
+elements and print all the elements of the array.
+
+**Note**: this array class should not do anything with printing content in the console or anything related to that, but
+here we want to learn and improve problem-solving skills.
+
+**Note**: Break down the problem into smaller more manageable pieces:
+
+### creating the Array Class
+
+```java
+public class Array {
+
+    public Array(int length) { // take the length
+        int[] items = new int[length]; // initialize an array with given number of elements
+    }
+}
+```
+
+### implementing print method
+
+```java
+
+public class Array {
+    // to make the items array accessible to all the other methods define it here as a class property
+    private int[] items;
+
+    public Array(int length) {
+        // int[] numbers = new int[length]; // if you define the array like this it will be accessible only within this method!
+        items = new int[length];
+    }
+
+    public void print() {
+        // if items was declared in the constructor it would've been only accessible in it only
+        for (int i = 0; i < items.length; i++) {
+            System.out.println(items[i]);
+        }
+    }
+}
+```
+
+here is another problem! when we initialize an array with specific number of elements java provides default values! in
+our case Zeros
+so iterating over that array with initial values we get zeros
+to solve it define another class property which represents the number of array elements and iterate over the array using
+that variable!
+
+```java
+
+public class Array {
+   private int[] items;
+   private int count;
+
+   public Array(int length) {
+      items = new int[length];
+   }
+
+   public void print() {
+      for (int i = 0; i < count; i++) {
+         System.out.println(items[i]);
+      }
+
+   }
+}
+```
+

@@ -19,7 +19,7 @@ the input grows
 O(1) represents "constant time complexity," meaning that the time it takes to run an operation does not depend on the
 size of the input. An O(1) operation will always take the same amount of time regardless of how large the input is.
 
-#### Example 1: Accessing an Array Element
+#### Example 1: Accessing an LearningArray Element
 
 Accessing an element in an array by index is O(1) because the time required to retrieve the element does not depend on
 the size of the array.
@@ -43,7 +43,7 @@ In this example, retrieving `numbers[2]` takes constant time, O(1), regardless o
 O(n), or "linear time complexity," means that the time it takes to complete the operation grows linearly with the size
 of the input. In an O(n) operation, if the input doubles, the time required to process it also roughly doubles.
 
-### Example 1: Summing All Elements in an Array
+### Example 1: Summing All Elements in an LearningArray
 
 Summing all elements in an array is an O(n) operation because we need to go through each element exactly once to
 calculate the total.
@@ -69,7 +69,7 @@ public class LinearTimeExample {
 In this example, the `for` loop iterates over each element in the array, making this an O(n) operation. The time taken
 grows proportionally with the array's size.
 
-### Example 2: Linear Search in an Array
+### Example 2: Linear Search in an LearningArray
 
 Finding an element in an unsorted array requires a linear search, where we check each element one by one until we find
 the target or reach the end of the array.
@@ -385,3 +385,94 @@ exclude).
 Algorithms with O(2^n) are typically avoided for large inputs. Instead, strategies like **dynamic programming** and *
 *memoization** can sometimes reduce exponential complexity (e.g., from O(2^n) to O(n) for the Fibonacci problem) by
 avoiding redundant calculations.
+
+## Space Complexity of algorithms
+
+Space complexity is a measure of the amount of memory an algorithm needs to run, relative to the input size. Just like
+time complexity, it’s an important factor to consider in designing efficient algorithms, especially when memory
+resources are limited.
+
+### What is Space Complexity?
+
+Space complexity calculates the extra space or memory an algorithm requires. It includes:
+
+1. **Fixed Part**: This is space required regardless of input size, such as space for:
+    - Constants
+    - Variable storage (e.g., counters, accumulators)
+    - Temporary storage for results
+
+2. **Variable Part**: This depends on the input size and may change as the input grows. It includes:
+    - Memory needed for dynamically allocated space (like arrays or data structures that grow with input)
+    - Space for recursion or stack space
+
+So, in simple terms, space complexity includes all the memory used by the algorithm: from storing variables to
+maintaining the call stack in recursive functions.
+
+### Space Complexity Notations
+
+- **O(1)**: Constant space. The algorithm uses a fixed amount of space regardless of input size.
+- **O(n)**: Linear space. Memory usage grows linearly with input size.
+- **O(n^2)**: Quadratic space. Memory usage grows with the square of the input size.
+
+### Example of Space Complexity
+
+Consider a function to calculate the sum of an array. Here’s how we analyze its space complexity:
+
+```java
+public class ArraySum {
+    public static int sumArray(int[] arr) {
+        int total = 0;  // O(1) space for the integer 'total'
+        for (int number : arr) {
+            total += number;  // O(1) space for 'number' in each iteration
+        }
+        return total;
+    }
+}
+
+```
+
+The space complexity here is **O(1)** because we only need a fixed amount of space to store the variable `total`, no
+matter the size of the array `arr`. We are not creating any extra structures or recursive calls, so memory usage remains
+constant.
+
+### Example of Higher Space Complexity: Recursion
+
+Consider the Fibonacci sequence using recursion:
+
+```java
+import java.util.Arrays;
+
+public class ArrayCopy {
+    public static int[] copyArray(int[] arr) {
+        int[] copiedArray = new int[arr.length];  // O(n) space for the new array
+        for (int i = 0; i < arr.length; i++) {
+            copiedArray[i] = arr[i];
+        }
+        return copiedArray;
+    }
+}
+
+```
+
+For each recursive call, a new stack frame is created. If `n` is large, the call stack can grow up to `O(n)`, so this
+recursive function has **O(n)** space complexity due to the recursion depth.
+
+```java
+import java.util.Arrays;
+
+public class ArrayCopy {
+    public static int[] copyArray(int[] arr) {
+        int[] copiedArray = new int[arr.length];  // O(n) space for the new array
+        for (int i = 0; i < arr.length; i++) {
+            copiedArray[i] = arr[i];
+        }
+        return copiedArray;
+    }
+}
+```
+
+### Why Space Complexity Matters
+
+Understanding space complexity is crucial in scenarios where memory is a constraint, like embedded systems, mobile
+devices, or when working with large datasets. Efficient algorithms optimize both time and space to make best use of
+available resources.

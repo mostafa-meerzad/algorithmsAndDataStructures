@@ -8,20 +8,24 @@ public class Array {
     }
 
     public void insert(int item) {
-        // if the array is full, resize it
         if (count == items.length) {
-            //      create a new array (twice the size)
             int[] newItems = new int[count * 2];
-            //      copy all the existing items
+
             for (int i = 0; i < count; i++) {
                 newItems[i] = items[i];
             }
-            //      set items to this new array
             items = newItems;
-
         }
-        // add the new item at the end
         items[count++] = item;
+    }
+
+    public void removeAt(int index) {
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = index; i < count; i++) {
+            items[i] = items[i + 1];
+        }
     }
 
     public void print() {

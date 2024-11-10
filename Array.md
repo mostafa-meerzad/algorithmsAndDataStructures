@@ -213,3 +213,30 @@ public class Array {
     }
 }
 ```
+
+## Implementing the removeAt method
+
+when dealing with user input ALWAYS validate the input
+
+[1,2,3,4] then want to remove 2
+
+take index for 2 which is 1
+inside a loop start iterating over the array starting from the given index till the end
+from the given index+1 (the sibling element) move them one step to the left
+literally over-riding the element with given index
+
+
+```java
+    public void removeAt(int index){
+
+        // validate the index
+        if(index < 0 || index >= count){
+            throw new IllegalArgumentException();
+        }
+        // move the items to the left to fill the hole
+
+        for(int i = index; i < count; i++ ){
+            items[i] = items[i + 1];
+        }
+    }
+```

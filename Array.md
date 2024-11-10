@@ -251,3 +251,144 @@ literally over-riding the element with given index
 
 }
 ```
+
+---
+
+# Dynamic Arrays in Java
+
+In Java, a dynamic array is an array that can resize itself automatically when elements are added or removed. This is
+helpful because traditional arrays in Java have a fixed size, meaning you have to declare their size at the time of
+creation, which cannot be changed later. Dynamic arrays overcome this limitation.
+
+### Key Points About Dynamic Arrays
+
+1. **Automatic Resizing**: Unlike regular arrays, dynamic arrays can grow or shrink as needed.
+2. **Implementation in Java**: Java provides the `ArrayList` class in the `java.util` package to handle dynamic arrays.
+3. **Underlying Array Mechanism**: Internally, `ArrayList` uses an array that grows when more space is needed.
+
+### How ArrayList Works
+
+1. **Initialization**: When an `ArrayList` is created, an internal array with an initial capacity is allocated.
+2. **Adding Elements**: When you add an element, if the array’s current capacity is exceeded, the `ArrayList` creates a
+   new, larger array, copies all elements from the old array to the new one, and then adds the new element.
+3. **Resizing**: The `ArrayList` grows in size by a fixed growth rate (often 1.5 to 2 times its original size) each time
+   it runs out of space.
+4. **Access and Performance**: `ArrayList` provides constant-time access (O(1)) to elements by index and linear time (O(
+   n)) for adding or removing elements at arbitrary positions.
+
+### Basic Usage Example
+
+Here’s how you might use `ArrayList`:
+
+```java
+import java.util.ArrayList;
+
+public class DynamicArrayExample {
+    public static void main(String[] args) {
+        // Create a dynamic array
+        ArrayList<Integer> numbers = new ArrayList<>();
+
+        // Add elements to the ArrayList
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        // Access an element
+        System.out.println("Element at index 1: " + numbers.get(1)); // 20
+
+        // Remove an element
+        numbers.remove(1); // Removes element at index 1
+
+        // ArrayList after removal
+        System.out.println("ArrayList after removal: " + numbers);
+
+        // Size of the ArrayList
+        System.out.println("Size of ArrayList: " + numbers.size());
+    }
+}
+```
+
+### Pros and Cons of Dynamic Arrays
+
+- **Pros**:
+    - They provide flexibility with automatic resizing.
+    - They allow easy insertion and removal of elements.
+
+- **Cons**:
+    - Resizing an array is an expensive operation as it involves copying elements.
+    - Memory overhead due to internal resizing and capacity management.
+
+In general, dynamic arrays like `ArrayList` are well-suited for cases where you anticipate frequent addition or removal
+of elements but still need fast access by index.
+
+## ArrayList vs Vector
+
+In Java, both `ArrayList` and `Vector` are implementations of dynamic arrays, but they differ in several key ways:
+
+### 1. **Synchronization**
+
+- **ArrayList**: Not synchronized, meaning it is not thread-safe. If multiple threads access an `ArrayList`
+  concurrently, and at least one modifies the list, you must manually synchronize it.
+- **Vector**: Synchronized, meaning it is thread-safe. All operations on a `Vector` are synchronized by default, which
+  can make it slower in single-threaded scenarios.
+
+### 2. **Performance**
+
+- **ArrayList**: Faster because it does not have the overhead of synchronization.
+- **Vector**: Slower due to the synchronization overhead, which locks each operation, making it less efficient when
+  thread safety is unnecessary.
+
+### 3. **Growth Rate**
+
+- **ArrayList**: Grows by about 50% of its current size when it runs out of space.
+- **Vector**: Grows by 100% (doubling in size) each time it needs more capacity, although this behavior can be
+  customized by specifying an increment value.
+
+### 4. **Legacy Status**
+
+- **ArrayList**: Part of the Java Collections Framework introduced in Java 1.2. It’s generally preferred for
+  single-threaded applications.
+- **Vector**: An older class that predates Java 1.2 and was part of the original Java 1.0 release. It’s now considered
+  somewhat outdated, though it is still supported for backward compatibility.
+
+### 5. **Usage Recommendation**
+
+- **ArrayList**: Recommended for use in most cases, especially in single-threaded applications.
+- **Vector**: Used mainly in legacy code or in cases where you specifically need synchronized dynamic arrays.
+
+### Code Comparison Example
+
+Here’s a side-by-side example of how you might use both:
+
+```java
+import java.util.ArrayList;
+import java.util.Vector;
+
+public class ListComparison {
+    public static void main(String[] args) {
+        // Using ArrayList
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("Java");
+        arrayList.add("Python");
+        System.out.println("ArrayList: " + arrayList);
+
+        // Using Vector
+        Vector<String> vector = new Vector<>();
+        vector.add("Java");
+        vector.add("Python");
+        System.out.println("Vector: " + vector);
+    }
+}
+```
+
+### Summary Table
+
+| Feature            | ArrayList        | Vector                |
+|--------------------|------------------|-----------------------|
+| Synchronization    | Not synchronized | Synchronized          |
+| Performance        | Faster           | Slower                |
+| Growth Rate        | 50%              | 100% (doubling)       |
+| Preferred Use Case | Single-threaded  | Legacy or thread-safe |
+
+In general, `ArrayList` is preferred unless you specifically need thread safety, in which case you might use `Vector`
+or, more often in modern Java, `Collections.synchronizedList(new ArrayList<>())` for a thread-safe `ArrayList`.

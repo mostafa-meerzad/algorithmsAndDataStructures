@@ -225,18 +225,29 @@ inside a loop start iterating over the array starting from the given index till 
 from the given index+1 (the sibling element) move them one step to the left
 literally over-riding the element with given index
 
+```java
+    public void removeAt(int index) {
+
+    // validate the index
+    if (index < 0 || index >= count) {
+        throw new IllegalArgumentException();
+    }
+    // move the items to the left to fill the hole
+
+    for (int i = index; i < count; i++) {
+        items[i] = items[i + 1];
+    }
+}
+```
+
+## Implementing indexOf method
 
 ```java
-    public void removeAt(int index){
+  public int indexOf(int item) {
+    for (int i = 0; i < count; i++)
+        if (items[i] == item)
+            return i;
+    return -1;
 
-        // validate the index
-        if(index < 0 || index >= count){
-            throw new IllegalArgumentException();
-        }
-        // move the items to the left to fill the hole
-
-        for(int i = index; i < count; i++ ){
-            items[i] = items[i + 1];
-        }
-    }
+}
 ```

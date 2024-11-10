@@ -128,19 +128,88 @@ that variable!
 ```java
 
 public class Array {
-   private int[] items;
-   private int count;
+    private int[] items;
+    private int count;
 
-   public Array(int length) {
-      items = new int[length];
-   }
+    public Array(int length) {
+        items = new int[length];
+    }
 
-   public void print() {
-      for (int i = 0; i < count; i++) {
-         System.out.println(items[i]);
-      }
+    public void print() {
+        for (int i = 0; i < count; i++) {
+            System.out.println(items[i]);
+        }
 
-   }
+    }
 }
 ```
 
+## Implementing insert method
+
+this method has two parts:
+
+1. insert the new given element at the end of the array
+
+we can't use the `length` property as the last index to add new element at the end of the `items` array the reason being
+arrays have default values in java and are pre-occupied.
+
+therefore we use the `count` property as the last index since it's tracking the number of elements in the array
+
+```java
+
+public class Array {
+    private int[] items;
+    private int count;
+
+    public Array(int length) {
+        items = new int[length];
+    }
+
+    public void insert(int item) {
+        // if the array is full, resize it
+        // add the new item at the end
+        items[count] = item;
+    }
+
+    public void print() {
+        for (int i = 0; i < count; i++) {
+            System.out.println(items[i]);
+        }
+    }
+}
+```
+
+```java
+
+public class Array {
+    private int[] items;
+    private int count;
+
+    public Array(int length) {
+        items = new int[length];
+    }
+
+    public void insert(int item) {
+        // if the array is full, resize it
+        if (count == items.length) {
+            //      create a new array (twice the size)
+            int[] newItems = new int[count * 2];
+            //      copy all the existing items
+            for (int i = 0; i < count; i++) {
+                newItems[i] = items[i];
+            }
+            //      set items to this new array
+            items = newItems;
+
+        }
+        // add the new item at the end
+        items[count++] = item;
+    }
+
+    public void print() {
+        for (int i = 0; i < count; i++) {
+            System.out.println(items[i]);
+        }
+    }
+}
+```

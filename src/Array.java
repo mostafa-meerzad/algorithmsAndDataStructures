@@ -7,6 +7,23 @@ public class Array {
         items = new int[length];
     }
 
+    public void insert(int item) {
+        // if the array is full, resize it
+        if (count == items.length) {
+            //      create a new array (twice the size)
+            int[] newItems = new int[count * 2];
+            //      copy all the existing items
+            for (int i = 0; i < count; i++) {
+                newItems[i] = items[i];
+            }
+            //      set items to this new array
+            items = newItems;
+
+        }
+        // add the new item at the end
+        items[count++] = item;
+    }
+
     public void print() {
         for (int i = 0; i < count; i++) {
             System.out.println(items[i]);

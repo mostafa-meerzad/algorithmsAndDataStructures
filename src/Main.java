@@ -1,14 +1,23 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        Array numbers = new Array(3);
 
-        numbers.insert(10);
-        numbers.insert(12);
-        numbers.insert(13);
-        numbers.insert(14);
-        numbers.insert(15);
-//        numbers.removeAt(4);
-//        numbers.print();
-        System.out.println(numbers.max());
+        Array first = new Array(4);
+        first.insert(1);
+        first.insert(2);
+        first.insert(3);
+        first.insert(4);
+        first.insert(5);
+
+        Array second = new Array(4);
+        second.insert(3);
+        second.insert(4);
+        second.insert(5);
+        second.insert(6);
+
+//        System.out.println(Arrays.toString(first.intersect(second)));
+        int[] commons = first.intersect(second);
+        System.out.println(Arrays.toString(commons));
     }
 }

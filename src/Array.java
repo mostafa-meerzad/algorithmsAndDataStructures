@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Array {
     private int[] items;
@@ -42,13 +43,30 @@ public class Array {
         }
     }
 
-    public int max(){
+    public int max() {
         int max = items[0];
-        for (int i=0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             if (items[i] > max)
                 max = items[i];
         }
         return max;
+    }
+
+    public int[] intersect(Array another) {
+        int commonsCount = Math.min(count, another.count);
+        int[] commons = new int[commonsCount];
+        int commonsIndex = 0;
+
+        for (int i = 0; i < another.count; i++) {
+            for (int j = 0; j < count; j++) {
+                if (another.items[i] == items[j]) {
+                    commons[commonsIndex++] = items[j];
+                    break;
+                }
+            }
+        }
+        return Arrays.copyOf(commons, commonsIndex);
+
     }
 
 

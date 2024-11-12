@@ -392,3 +392,18 @@ public class ListComparison {
 
 In general, `ArrayList` is preferred unless you specifically need thread safety, in which case you might use `Vector`
 or, more often in modern Java, `Collections.synchronizedList(new ArrayList<>())` for a thread-safe `ArrayList`.
+
+## Array Exercises
+
+1. Extend the Array class and add a new method to return the largest
+   number. What is the runtime complexity of this method?
+    ```java
+   public int max(){
+        int max = items[0];
+        for (int i=0; i < count; i++){
+            if (items[i] > max)
+                max = items[i];
+        }
+        return max;
+    }
+    ```

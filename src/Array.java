@@ -41,4 +41,15 @@ public class Array {
             System.out.println(items[i]);
         }
     }
+
+    public int max(){
+        int max = items[0];
+        for (int i=0; i < count; i++){
+            if (items[i] > max)
+                max = items[i];
+        }
+        return max;
+    }
+
+
 }

@@ -7,7 +7,8 @@ public class Main {
         numbers.insert(13);
         numbers.insert(14);
         numbers.insert(15);
-        numbers.removeAt(4);
-        numbers.print();
+//        numbers.removeAt(4);
+//        numbers.print();
+        System.out.println(numbers.max());
     }
 }

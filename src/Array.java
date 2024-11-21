@@ -69,5 +69,22 @@ public class Array {
 
     }
 
+    public Array reverse() {
+        Array reverse = new Array(count);
+        for (int i = count - 1; i > -1; i--) {
+            reverse.insert(items[i]);
+        }
+
+        return reverse;
+
+    }
+
+    public String printArray() {
+        int[] arrayItems = new int[count];
+        for (int i = 0; i < count; i++)
+            arrayItems[i] = items[i];
+        return Arrays.toString(arrayItems);
+    }
+
 
 }

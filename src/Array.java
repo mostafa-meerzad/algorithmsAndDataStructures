@@ -71,7 +71,7 @@ public class Array {
 
     public Array reverse() {
         Array reverse = new Array(count);
-        for (int i = count - 1; i > -1; i--) {
+        for (int i = count - 1; i >= 0; i--) {
             reverse.insert(items[i]);
         }
 
@@ -84,6 +84,27 @@ public class Array {
         for (int i = 0; i < count; i++)
             arrayItems[i] = items[i];
         return Arrays.toString(arrayItems);
+    }
+
+    public void insertAt(int item, int index) {
+        if(index < 0 || index > count){
+            throw new IllegalArgumentException("Invalid index");
+        }
+
+        if (count == items.length){
+            int[] newItems = new int[items.length * 2];
+            for (int i = 0; i < count; i++){
+                newItems[i] = items[i];
+            }
+            items = newItems;
+        }
+
+        for (int i = count - 1; i >= index; i--){
+            items[i + 1] = items[i];
+        }
+
+        items[index] = item;
+        count++;
     }
 
 

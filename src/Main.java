@@ -21,6 +21,9 @@ public class Main {
 //        System.out.println(Arrays.toString(commons));
         Array reverse = first.reverse();
         System.out.println(first.printArray());;
-        System.out.println(reverse.printArray());
+//        System.out.println(reverse.printArray());
+        System.out.println();
+        first.insertAt(9, 0);
+        System.out.println(first.printArray());
     }
 }

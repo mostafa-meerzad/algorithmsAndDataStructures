@@ -6,7 +6,12 @@ public class Main {
     public static void main(String[] args) {
         LinkedList myLinkedList = new LinkedList();
 
-        myLinkedList.addFirst(10);
+        myLinkedList.addLast(10);
+        myLinkedList.addLast(20);
+//        myLinkedList.addLast(30);
+        myLinkedList.addFirst(40);
+        myLinkedList.addFirst(50);
+
 
     }
 }

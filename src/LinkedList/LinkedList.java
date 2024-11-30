@@ -16,7 +16,6 @@ public class LinkedList {
     private Node last;
 
     // addFirst
-    // addLast
     public void addLast(int item) {
         //todo
         // 1. crate a new node
@@ -36,7 +35,37 @@ public class LinkedList {
         }
 
     }
+
+
+    // addLast
+    public void addFirst(int item) {
+        //todo
+        // create new node
+        // * allocate memory for a new node and assign give value
+        // handle empty list case
+        // * check if first or last is null list is empty
+        // * if so make the new node first and last
+        // handle non-empty list case
+        // * assign new node's next to the last
+        // * assign the new node as the new last
+
+        var node = new Node(item);
+
+        if (first == null) {
+            // first = node;
+            // last = node;
+            // or
+            first = last = node;
+        }
+        else {
+            node.next = last;
+            last = node;
+        }
+
+    }
+
     // deleteFirst
+
     // deleteLast
     // contains
     // indexOf

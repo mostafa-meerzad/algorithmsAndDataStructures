@@ -19,7 +19,7 @@ the input grows
 O(1) represents "constant time complexity," meaning that the time it takes to run an operation does not depend on the
 size of the input. An O(1) operation will always take the same amount of time regardless of how large the input is.
 
-#### Example 1: Accessing an LearningArray Element
+#### Example 1: Accessing an Array.LearningArray Element
 
 Accessing an element in an array by index is O(1) because the time required to retrieve the element does not depend on
 the size of the array.
@@ -43,7 +43,7 @@ In this example, retrieving `numbers[2]` takes constant time, O(1), regardless o
 O(n), or "linear time complexity," means that the time it takes to complete the operation grows linearly with the size
 of the input. In an O(n) operation, if the input doubles, the time required to process it also roughly doubles.
 
-### Example 1: Summing All Elements in an LearningArray
+### Example 1: Summing All Elements in an Array.LearningArray
 
 Summing all elements in an array is an O(n) operation because we need to go through each element exactly once to
 calculate the total.
@@ -69,7 +69,7 @@ public class LinearTimeExample {
 In this example, the `for` loop iterates over each element in the array, making this an O(n) operation. The time taken
 grows proportionally with the array's size.
 
-### Example 2: Linear Search in an LearningArray
+### Example 2: Linear Search in an Array.LearningArray
 
 Finding an element in an unsorted array requires a linear search, where we check each element one by one until we find
 the target or reach the end of the array.

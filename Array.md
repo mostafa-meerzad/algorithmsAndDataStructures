@@ -1,4 +1,4 @@
-# LearningArray
+# Array.LearningArray
 
 Arrays store list of items sequentially
 If you want to store a list of elements and access them by their index Arrays are the best option for you
@@ -25,7 +25,7 @@ If you want to store a list of elements and access them by their index Arrays ar
 
 ```java
 
-public class LearningArray {
+public class Array.LearningArray {
 
     public static void main(String[] args) {
         // arrayDataType[] arrayName = new arrayDataType[numberOfElements]
@@ -45,7 +45,7 @@ value
 ## Adding Individual Elements
 
 ```java
-public class LearningArray {
+public class Array.LearningArray {
 
     public static void main(String[] args) {
         int[] numbers = new int[3];
@@ -64,7 +64,7 @@ public class LearningArray {
 ```java
 import java.util.Arrays;
 
-public class LearningArray {
+public class Array.LearningArray {
 
     public static void main(String[] args) {
         int[] numbers = {10, 20, 30};
@@ -76,9 +76,9 @@ public class LearningArray {
 
 ```
 
-## Exercise:1 Create a Dynamic Array
+## Exercise:1 Create a Dynamic Array.Array
 
-Implement an Array Class that takes the length of the array as an argument, then we can insert new elements, remove
+Implement an Array.Array Class that takes the length of the array as an argument, then we can insert new elements, remove
 elements and print all the elements of the array.
 
 **Note**: this array class should not do anything with printing content in the console or anything related to that, but
@@ -86,12 +86,12 @@ here we want to learn and improve problem-solving skills.
 
 **Note**: Break down the problem into smaller more manageable pieces:
 
-### creating the Array Class
+### creating the Array.Array Class
 
 ```java
-public class Array {
+public class Array.Array {
 
-    public Array(int length) { // take the length
+    public Array.Array(int length) { // take the length
         int[] items = new int[length]; // initialize an array with given number of elements
     }
 }
@@ -101,11 +101,11 @@ public class Array {
 
 ```java
 
-public class Array {
+public class Array.Array {
     // to make the items array accessible to all the other methods define it here as a class property
     private int[] items;
 
-    public Array(int length) {
+    public Array.Array(int length) {
         // int[] numbers = new int[length]; // if you define the array like this it will be accessible only within this method!
         items = new int[length];
     }
@@ -127,11 +127,11 @@ that variable!
 
 ```java
 
-public class Array {
+public class Array.Array {
     private int[] items;
     private int count;
 
-    public Array(int length) {
+    public Array.Array(int length) {
         items = new int[length];
     }
 
@@ -157,11 +157,11 @@ therefore we use the `count` property as the last index since it's tracking the 
 
 ```java
 
-public class Array {
+public class Array.Array {
     private int[] items;
     private int count;
 
-    public Array(int length) {
+    public Array.Array(int length) {
         items = new int[length];
     }
 
@@ -181,11 +181,11 @@ public class Array {
 
 ```java
 
-public class Array {
+public class Array.Array {
     private int[] items;
     private int count;
 
-    public Array(int length) {
+    public Array.Array(int length) {
         items = new int[length];
     }
 
@@ -264,7 +264,7 @@ creation, which cannot be changed later. Dynamic arrays overcome this limitation
 
 1. **Automatic Resizing**: Unlike regular arrays, dynamic arrays can grow or shrink as needed.
 2. **Implementation in Java**: Java provides the `ArrayList` class in the `java.util` package to handle dynamic arrays.
-3. **Underlying Array Mechanism**: Internally, `ArrayList` uses an array that grows when more space is needed.
+3. **Underlying Array.Array Mechanism**: Internally, `ArrayList` uses an array that grows when more space is needed.
 
 ### How ArrayList Works
 
@@ -393,9 +393,9 @@ public class ListComparison {
 In general, `ArrayList` is preferred unless you specifically need thread safety, in which case you might use `Vector`
 or, more often in modern Java, `Collections.synchronizedList(new ArrayList<>())` for a thread-safe `ArrayList`.
 
-## Array Exercises
+## Array.Array Exercises
 
-1. Extend the Array class and add a new method to return the largest
+1. Extend the Array.Array class and add a new method to return the largest
    number. What is the runtime complexity of this method?
     ```java
    public int max(){

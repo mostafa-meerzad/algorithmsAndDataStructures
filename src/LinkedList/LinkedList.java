@@ -26,7 +26,7 @@ public class LinkedList {
 
         // 1
         var node = new Node(item);
-        if (first == null) {
+        if (isEmpty()) {
             first = node;
             last = node;
         } else {
@@ -51,7 +51,7 @@ public class LinkedList {
 
         var node = new Node(item);
 
-        if (first == null) {
+        if (isEmpty()) {
             // first = node;
             // last = node;
             // or
@@ -65,8 +65,11 @@ public class LinkedList {
     }
 
     // deleteFirst
-
     // deleteLast
     // contains
     // indexOf
+    // to improve readability and write clean code
+    private boolean isEmpty(){
+        return first == null;
+    }
 }

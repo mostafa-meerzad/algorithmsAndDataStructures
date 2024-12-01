@@ -68,6 +68,27 @@ public class LinkedList {
     // deleteLast
     // contains
     // indexOf
+    public int indexOf(int item){
+        //todo
+        // keep track of index and nodes
+        // have a loop that loops until the current node is null
+        // check if current node's value is the equal to the provided item
+        // * if so return index
+        // * if not assign next node to current node and increment the index
+        // return -1 if can't find the index
+
+        int index = 0;
+        Node current = first;
+
+        while(current != null){
+            if(current.value == item){
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
     // to improve readability and write clean code
     private boolean isEmpty(){
         return first == null;

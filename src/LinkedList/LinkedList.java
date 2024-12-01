@@ -67,16 +67,43 @@ public class LinkedList {
     // deleteFirst
     // deleteLast
     // contains
+    public boolean contains(int item){
+        //todo
+        // start traversal at the first node
+        // * initialize a pointer "current" to start from first node
+        // traverse the list
+        // * while the "current" node is not null, compare the current node's value with the target value
+        // if a match is found return "True"
+        // move to the next node
+        // * advance the "current" pointer to the next node
+        // handle the case where no match is found
+        // return "False"
+
+        Node current = first;
+
+        while(current != null){
+            if(current.value == item){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
     // indexOf
     public int indexOf(int item){
         //todo
-        // keep track of index and nodes
-        // have a loop that loops until the current node is null
-        // check if current node's value is the equal to the provided item
-        // * if so return index
-        // * if not assign next node to current node and increment the index
-        // return -1 if can't find the index
-
+        // start traversal at the first node
+        // * initialize a pointer "current" to start at the first node
+        // * keep track of current index using an integer variable "index"
+        // travers the list
+        // * while the current node is not null, compare the value of current node with the target value
+        // * if a match is found return the current index
+        // move to the next node
+        // * advance the "current" pointer to the next node
+        // * increment the index counter
+        // handle the case where the value is not found
+        // * if the traversal reaches the end of the list (current == null) and not match is found return -1
         int index = 0;
         Node current = first;
 

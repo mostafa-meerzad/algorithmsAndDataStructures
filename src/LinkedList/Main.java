@@ -13,5 +13,6 @@ public class Main {
 //        myLinkedList.addFirst(50);
 
         System.out.println(myLinkedList.indexOf(30));
+        System.out.println(myLinkedList.contains(40));
     }
 }

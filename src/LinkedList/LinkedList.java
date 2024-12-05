@@ -58,8 +58,8 @@ public class LinkedList {
             // or
             first = last = node;
         } else {
-            node.next = last;
-            last = node;
+            node.next = first;
+            first = node;
         }
 
     }
@@ -91,6 +91,44 @@ public class LinkedList {
     }
 
     // deleteLast
+    public void removeLast() {
+
+        //todo
+        // check if the list is empty
+        // * throw an error
+        // check if list has only one element
+        // * update first and last to "null"
+        // else
+        // * traverse the list using a while loop
+        // * check if current element's next is last
+        // if so
+        // * update last to current item
+        // otherwise
+        // * update current to current.next
+
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        if (first == last) {
+            first = last = null;
+            return;
+        }
+//        var current = first;
+//        while (current != null) {
+//            if (current.next == last) {
+//                last = current;
+//                current.next = null;
+//                return;
+//            }
+//            current = current.next;
+//        }
+
+        var previous = getPrevious(last);
+        last = previous;
+        last.next = null;
+
+    }
+
     // contains
     public boolean contains(int item) {
         //todo
@@ -148,5 +186,16 @@ public class LinkedList {
     // to improve readability and write clean code
     private boolean isEmpty() {
         return first == null;
+    }
+
+    private Node getPrevious(Node node){
+        var current = first;
+        while (current != null) {
+            if (current.next == node) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
     }
 }

@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.NoSuchElementException;
+
 public class LinkedList {
 
     private class Node {
@@ -36,7 +38,6 @@ public class LinkedList {
 
     }
 
-
     // addLast
     public void addFirst(int item) {
         //todo
@@ -56,18 +57,42 @@ public class LinkedList {
             // last = node;
             // or
             first = last = node;
-        }
-        else {
+        } else {
             node.next = last;
             last = node;
         }
 
     }
 
-    // deleteFirst
+    // removeFirst
+    public void removeFirst() {
+        //todo
+        // check if the list empty
+        // if so
+        // throw an error
+        // if list has only one element
+        // * empty out first and second then return
+        // otherwise
+        // * initialize a pointer "second" to hold the second node "first.next"
+        // * update first.next to "null" so it doesn't reference any node and can be garbage-collected
+        // * override first to second
+
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        if (first == last) {
+            first = last = null;
+            return;
+        }
+        Node second = first.next;
+        first.next = null;
+        first = second;
+
+    }
+
     // deleteLast
     // contains
-    public boolean contains(int item){
+    public boolean contains(int item) {
         //todo
         // start traversal at the first node
         // * initialize a pointer "current" to start from first node
@@ -81,17 +106,20 @@ public class LinkedList {
 
         Node current = first;
 
-        while(current != null){
-            if(current.value == item){
+        while (current != null) {
+            if (current.value == item) {
                 return true;
             }
             current = current.next;
         }
         return false;
+
+        // to break my mind, here is Mosh's solution
+//        return indexOf(item) != -1;
     }
 
     // indexOf
-    public int indexOf(int item){
+    public int indexOf(int item) {
         //todo
         // start traversal at the first node
         // * initialize a pointer "current" to start at the first node
@@ -107,8 +135,8 @@ public class LinkedList {
         int index = 0;
         Node current = first;
 
-        while(current != null){
-            if(current.value == item){
+        while (current != null) {
+            if (current.value == item) {
                 return index;
             }
             current = current.next;
@@ -116,8 +144,9 @@ public class LinkedList {
         }
         return -1;
     }
+
     // to improve readability and write clean code
-    private boolean isEmpty(){
+    private boolean isEmpty() {
         return first == null;
     }
 }

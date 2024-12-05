@@ -16,6 +16,7 @@ public class LinkedList {
     // these first and last variables hold head and tail of the linkedList
     private Node first = null;
     private Node last;
+    private int size;
 
     // addFirst
     public void addLast(int item) {
@@ -35,7 +36,7 @@ public class LinkedList {
             last.next = node;
             last = node;
         }
-
+    size++;
     }
 
     // addLast
@@ -61,6 +62,7 @@ public class LinkedList {
             node.next = first;
             first = node;
         }
+        size++;
 
     }
 
@@ -87,6 +89,7 @@ public class LinkedList {
         Node second = first.next;
         first.next = null;
         first = second;
+        size--;
 
     }
 
@@ -126,6 +129,7 @@ public class LinkedList {
         var previous = getPrevious(last);
         last = previous;
         last.next = null;
+        size--;
 
     }
 
@@ -183,12 +187,45 @@ public class LinkedList {
         return -1;
     }
 
+    // size
+    // the following implementation will work but it's time complexity is O(n), it is not very efficient, you need to traverse the array
+    // everytime it's called
+//    public int size() {
+//        //todo
+//        // define a size variable
+//        // check if list is empty
+//        // * if so return size is 0
+//        // check if list has only one element
+//        // if so size is 1
+//        // otherwise
+//        // * traverse the list while keep counting
+//        int size;
+//        if (first == null)
+//            size = 0;
+//        else if (first == last)
+//            size = 1;
+//        else {
+//            Node current = first;
+//            size = 1;
+//            while (current.next != null) {
+//                size += 1;
+//                current = current.next;
+//            }
+//
+//        }
+//        return size;
+//
+//    }
+
+    public int size(){
+        return size;
+    }
     // to improve readability and write clean code
     private boolean isEmpty() {
         return first == null;
     }
 
-    private Node getPrevious(Node node){
+    private Node getPrevious(Node node) {
         var current = first;
         while (current != null) {
             if (current.next == node) {

@@ -133,3 +133,5 @@ The fundamental reason for the above complexities lies in the **sequential natur
 
 - Nodes are scattered in memory and connected via pointers.
 - There is no direct indexing or quick access mechanism (like arrays), so most operations involve sequential traversal to find nodes.
+
+**Note**: when writing algorithms always keep an eye on the performance and efficiency

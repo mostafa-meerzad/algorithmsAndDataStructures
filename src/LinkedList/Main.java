@@ -17,18 +17,19 @@ public class Main {
         //
 
 
-        myLinkedList.removeLast();
-        myLinkedList.removeLast();
-        myLinkedList.removeLast();
+//        myLinkedList.removeLast();
+//        myLinkedList.removeLast();
+//        myLinkedList.removeLast();
         myLinkedList.removeLast();
 
 //        myLinkedList.addFirst(50);
 //        myLinkedList.removeFirst();
-//        myLinkedList.removeFirst();
+        myLinkedList.removeFirst();
 //        myLinkedList.removeFirst();
 
-        System.out.println(myLinkedList.indexOf(30));
-        System.out.println(myLinkedList.contains(20));
-        System.out.println(myLinkedList.contains(10));
+//        System.out.println(myLinkedList.indexOf(30));
+//        System.out.println(myLinkedList.contains(20));
+//        System.out.println(myLinkedList.contains(10));
+        System.out.println(myLinkedList.size());
     }
 }

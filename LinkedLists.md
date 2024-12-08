@@ -135,3 +135,11 @@ The fundamental reason for the above complexities lies in the **sequential natur
 - There is no direct indexing or quick access mechanism (like arrays), so most operations involve sequential traversal to find nodes.
 
 **Note**: when writing algorithms always keep an eye on the performance and efficiency
+
+in terms of space
+
+![Screenshot-95.png](Screenshot-95.png)
+
+in terms of time-complexity
+
+![Screenshot-96.png](Screenshot-96.png)

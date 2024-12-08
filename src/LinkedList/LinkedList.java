@@ -36,7 +36,7 @@ public class LinkedList {
             last.next = node;
             last = node;
         }
-    size++;
+        size++;
     }
 
     // addLast
@@ -217,9 +217,29 @@ public class LinkedList {
 //
 //    }
 
-    public int size(){
+    public int size() {
         return size;
     }
+
+    public int[] toArray() {
+        //todo
+        // define an empty array (array = [size]) with the same size as our likedList
+        // declare an index variable (index = 0), to track our element's indices
+        // traverse the list to the end (current.next == null)
+        // in each iteration increase the index (index++) and change current to (current = current.next)
+
+        int[] array = new int[size];
+        int index = 0;
+        var current = first;
+        while (current != null) {
+            array[index] = current.value;
+            current = current.next;
+            index++;
+
+        }
+        return array;
+    }
+
     // to improve readability and write clean code
     private boolean isEmpty() {
         return first == null;

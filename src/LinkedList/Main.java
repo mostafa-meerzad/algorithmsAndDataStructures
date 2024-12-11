@@ -34,5 +34,7 @@ public class Main {
 //        System.out.println(myLinkedList.contains(10));
         System.out.println(myLinkedList.size());
         System.out.println(Arrays.toString(myLinkedList.toArray()));
+        myLinkedList.reverse();
+        System.out.println(Arrays.toString(myLinkedList.toArray()));
     }
 }

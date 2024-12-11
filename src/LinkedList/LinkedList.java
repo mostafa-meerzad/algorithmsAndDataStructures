@@ -240,6 +240,24 @@ public class LinkedList {
         return array;
     }
 
+
+    // reverse the list
+    public void reverse() {
+        var previous = first;
+        var current = first.next;
+
+        while (current != null) {
+            var next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        last = first;
+        last.next = null;
+        first = previous;
+
+    }
+
     // to improve readability and write clean code
     private boolean isEmpty() {
         return first == null;

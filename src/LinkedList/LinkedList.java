@@ -258,6 +258,25 @@ public class LinkedList {
 
     }
 
+    public int getKThFromTheEnd(int k) {
+        if (isEmpty()) {
+            throw new IllegalStateException();
+        }
+        var a = first;
+        var b = first;
+        for (int i = 0; i < k - 1; i++) {
+            b = b.next;
+            if (b == null) {
+                throw new IllegalArgumentException();
+            }
+        }
+        while (b != last) {
+            a = a.next;
+            b = b.next;
+        }
+        return a.value;
+    }
+
     // to improve readability and write clean code
     private boolean isEmpty() {
         return first == null;

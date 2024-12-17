@@ -11,10 +11,10 @@ public class Main {
 //        myLinkedList.addLast(10);
 //        myLinkedList.addLast(20);
 //        myLinkedList.addLast(30);
-        myLinkedList.addFirst(10);
-        myLinkedList.addFirst(20);
-        myLinkedList.addFirst(30);
-        myLinkedList.addFirst(40);
+//        myLinkedList.addFirst(10);
+//        myLinkedList.addFirst(20);
+//        myLinkedList.addFirst(30);
+//        myLinkedList.addFirst(40);
         // [40 -> 10 -> 20 -> 30]
         //
 
@@ -34,7 +34,8 @@ public class Main {
 //        System.out.println(myLinkedList.contains(10));
         System.out.println(myLinkedList.size());
         System.out.println(Arrays.toString(myLinkedList.toArray()));
-        myLinkedList.reverse();
-        System.out.println(Arrays.toString(myLinkedList.toArray()));
+//        myLinkedList.reverse();
+//        System.out.println(Arrays.toString(myLinkedList.toArray()));
+        System.out.println(myLinkedList.getKThFromTheEnd(10));
     }
 }

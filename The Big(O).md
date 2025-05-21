@@ -4,25 +4,21 @@
 
 ### The Traditional explanation
 
-Big O is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a
-particular value or infinity.
+Big O is a mathematical notation that describes the limiting behavior of a function when the argument tends towards a particular value or infinity.
 
 ### The Better way
 
 We use Big O to describe the performance of an algorithm!
 
-which helps us determine if an algorithm is scalable or not, in other words is the algorithm going to perform well when
-the input grows
+which helps us determine if an algorithm is scalable or not, in other words is the algorithm going to perform well when the input grows
 
 ### O(1)
 
-O(1) represents "constant time complexity," meaning that the time it takes to run an operation does not depend on the
-size of the input. An O(1) operation will always take the same amount of time regardless of how large the input is.
+O(1) represents "constant time complexity," meaning that the time it takes to run an operation does not depend on the size of the input. An O(1) operation will always take the same amount of time regardless of how large the input is.
 
 #### Example 1: Accessing an Array.LearningArray Element
 
-Accessing an element in an array by index is O(1) because the time required to retrieve the element does not depend on
-the size of the array.
+Accessing an element in an array by index is O(1) because the time required to retrieve the element does not depend on the size of the array.
 
 **Java example:**
 
@@ -40,8 +36,7 @@ In this example, retrieving `numbers[2]` takes constant time, O(1), regardless o
 
 ## O(n)
 
-O(n), or "linear time complexity," means that the time it takes to complete the operation grows linearly with the size
-of the input. In an O(n) operation, if the input doubles, the time required to process it also roughly doubles.
+O(n), or "linear time complexity," means that the time it takes to complete the operation grows linearly with the size  of the input. In an O(n) operation, if the input doubles, the time required to process it also roughly doubles.
 
 ### Example 1: Summing All Elements in an Array.LearningArray
 

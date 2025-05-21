@@ -1,20 +1,22 @@
-# Array.LearningArray
+#  LearningArray
 
 Arrays store list of items sequentially
-If you want to store a list of elements and access them by their index Arrays are the best option for you
+If you want to store a list of elements and access them by their index, Arrays are the best option for you
 
 1. accessing elements of an array using their index is `O(1)`
 
+
 2. inserting elements  `O(n)`
 
-   in java and some other languages arrays are static, and we must specify the size of array ahead of time by guessing
+   in java and some other languages arrays are static, and we must specify the size of an array ahead of time by guessing
 
-    - oversize: we wast memory for the empty locations
-    - undersized: we can't store the rest of elements which means we need to move elements into a larger array! `O(n)`
+    - oversize: we waste memory for the empty locations
+    - undersized: we can't store the rest of elements, which means we need to move elements into a larger array! `O(n)`
 
-   e.x: we have a 5 item array and need to add a 6th element! now we need to move all 6 elements to a new and larger
-   array with 6 elements. the `run time complexity` of this operation grows linearly with direct proportion to the size
+   e.x: we have a 5-item array and need to add a sixth element! now we need to move all six elements to a new and larger
+   array with six elements. the `run time complexity` of this operation grows linearly with direct proportion to the size
    of the array `O(n)`
+
 
 3. deleting an element
 
@@ -25,7 +27,7 @@ If you want to store a list of elements and access them by their index Arrays ar
 
 ```java
 
-public class Array.LearningArray {
+public class  LearningArray {
 
     public static void main(String[] args) {
         // arrayDataType[] arrayName = new arrayDataType[numberOfElements]
@@ -45,7 +47,7 @@ value
 ## Adding Individual Elements
 
 ```java
-public class Array.LearningArray {
+public class  LearningArray {
 
     public static void main(String[] args) {
         int[] numbers = new int[3];
@@ -64,7 +66,7 @@ public class Array.LearningArray {
 ```java
 import java.util.Arrays;
 
-public class Array.LearningArray {
+public class LearningArray {
 
     public static void main(String[] args) {
         int[] numbers = {10, 20, 30};
@@ -76,23 +78,23 @@ public class Array.LearningArray {
 
 ```
 
-## Exercise:1 Create a Dynamic Array.Array
+## Exercise:1 Create a Dynamic  Array
 
-Implement an Array.Array Class that takes the length of the array as an argument, then we can insert new elements, remove
-elements and print all the elements of the array.
+Implement an  Array Class that takes the length of the array as an argument, then we can insert new elements, remove
+elements and print all the elements of the  
 
 **Note**: this array class should not do anything with printing content in the console or anything related to that, but
 here we want to learn and improve problem-solving skills.
 
 **Note**: Break down the problem into smaller more manageable pieces:
 
-### creating the Array.Array Class
+### creating the  Array Class
 
 ```java
-public class Array.Array {
+public class Array {
 
-    public Array.Array(int length) { // take the length
-        int[] items = new int[length]; // initialize an array with given number of elements
+    public Array(int length) { // take the length
+        int[] items = new int[length]; // initialize an array with a given number of elements
     }
 }
 ```
@@ -101,17 +103,17 @@ public class Array.Array {
 
 ```java
 
-public class Array.Array {
-    // to make the items array accessible to all the other methods define it here as a class property
+public class Array {
+    // to make the item array accessible to all the other methods, define it here as a class property
     private int[] items;
 
-    public Array.Array(int length) {
-        // int[] numbers = new int[length]; // if you define the array like this it will be accessible only within this method!
-        items = new int[length];
+    public Array(int length) {
+        // int[] numbers = new int[length]; // if you define the array like this, it will be accessible only within this method!
+        items = new int[length]; // initialize the "items" array with the given length
     }
 
     public void print() {
-        // if items was declared in the constructor it would've been only accessible in it only
+        // if items were declared in the constructor, it would've been only accessible in it only
         for (int i = 0; i < items.length; i++) {
             System.out.println(items[i]);
         }
@@ -119,19 +121,19 @@ public class Array.Array {
 }
 ```
 
-here is another problem! when we initialize an array with specific number of elements java provides default values! in
+here is another problem! when we initialize an array with a specific number of elements, java provides default values! in
 our case Zeros
-so iterating over that array with initial values we get zeros
+so iterating over that array with initial values, we get zeros
 to solve it define another class property which represents the number of array elements and iterate over the array using
 that variable!
 
 ```java
 
-public class Array.Array {
+public class  Array {
     private int[] items;
     private int count;
 
-    public Array.Array(int length) {
+    public  Array(int length) {
         items = new int[length];
     }
 
@@ -157,11 +159,11 @@ therefore we use the `count` property as the last index since it's tracking the 
 
 ```java
 
-public class Array.Array {
+public class  Array {
     private int[] items;
     private int count;
 
-    public Array.Array(int length) {
+    public  Array(int length) {
         items = new int[length];
     }
 
@@ -181,11 +183,11 @@ public class Array.Array {
 
 ```java
 
-public class Array.Array {
+public class  Array {
     private int[] items;
     private int count;
 
-    public Array.Array(int length) {
+    public  Array(int length) {
         items = new int[length];
     }
 
@@ -264,7 +266,7 @@ creation, which cannot be changed later. Dynamic arrays overcome this limitation
 
 1. **Automatic Resizing**: Unlike regular arrays, dynamic arrays can grow or shrink as needed.
 2. **Implementation in Java**: Java provides the `ArrayList` class in the `java.util` package to handle dynamic arrays.
-3. **Underlying Array.Array Mechanism**: Internally, `ArrayList` uses an array that grows when more space is needed.
+3. **Underlying  Array Mechanism**: Internally, `ArrayList` uses an array that grows when more space is needed.
 
 ### How ArrayList Works
 
@@ -393,9 +395,9 @@ public class ListComparison {
 In general, `ArrayList` is preferred unless you specifically need thread safety, in which case you might use `Vector`
 or, more often in modern Java, `Collections.synchronizedList(new ArrayList<>())` for a thread-safe `ArrayList`.
 
-## Array.Array Exercises
+##  Array Exercises
 
-1. Extend the Array.Array class and add a new method to return the largest
+1. Extend the  Array class and add a new method to return the largest
    number. What is the runtime complexity of this method?
     ```java
    public int max(){

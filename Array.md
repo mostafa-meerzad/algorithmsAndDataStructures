@@ -88,7 +88,7 @@ here we want to learn and improve problem-solving skills.
 
 **Note**: Break down the problem into smaller more manageable pieces:
 
-### creating the  Array Class
+### creating the Array Class
 
 ```java
 public class Array {
@@ -121,11 +121,8 @@ public class Array {
 }
 ```
 
-here is another problem! when we initialize an array with a specific number of elements, java provides default values! in
-our case Zeros
-so iterating over that array with initial values, we get zeros
-to solve it define another class property which represents the number of array elements and iterate over the array using
-that variable!
+here is another problem! when we initialize an array with a specific number of elements, java provides default values! in our case Zeros. so iterating over that array with initial values, we get zeros
+to solve it define another class property which represents the number of array elements and iterate over the array using that variable!
 
 ```java
 

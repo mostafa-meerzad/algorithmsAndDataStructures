@@ -1,11 +1,50 @@
 package Review;
 // todo
-// create an array class:
-// 1. that can accept the length of the array as an argument ✅
-// 2. the size of the array should be dynamic
-// 3. add new elements to the array
-// 4. remove elements from the array
-// 5. print each element of the array ✅
+/*
+==================================
+    Dynamic Array Implementation
+==================================
+PROBLEM:
+Create a dynamic array class that supports basic array operations.
+
+REQUIREMENTS:
+1. Accept an initial length/capacity
+2. Print all elements
+3. Dynamically resize the array as needed
+4. Add new elements to the array
+5. Remove elements from the array
+
+DESIGN:
+- Use an integer array ('items') to store elements.
+- Use an integer counter ('count') to track current number elements.
+- Resize logic: if full, double the current capacity and copy items.
+
+IMPLEMENTATION PLAN:
+> CONSTRUCTOR:
+- Accept 'length' and initialize 'items = new int[length]'
+- Set 'count = 0'
+
+> print():
+- Loop from 0 to 'count - 1', print each element
+
+> insert(item):
+- If full 'count == items.length'
+    - create a new array with double the size
+    - copy old elements to new array
+    - assign new array to 'items'
+- Insert 'item' at 'items[count]'
+- Increment 'count'
+
+> removeAt(index):
+- Check if 'index' is valid
+- Shift element left to fill the gap
+- Decrement count
+
+> EDGE CASES:
+- Insert beyond capacity --> needs resize
+- Remove from empty array --> return error
+- Invalid index for removal --> throw exception
+*/
 
 public class Array {
     private int[] items;

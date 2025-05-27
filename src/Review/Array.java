@@ -57,7 +57,17 @@ IMPLEMENTATION PLAN:
 - Iterate over all elements of the array comparing to default max
 - Found new max, update old max
 - return max
->
+
+> reverse():
+- Define a new empty array,
+- Iterate over original array
+- it's important to start iteration from 0
+- get last element and assign it to the first element in the new array
+- loop variable starting from 0 to count of elements
+    - reversedInex => elements-count - loop-var - 1
+    -    2         =>      3         -     0    - 1
+    -    1         =>      3         -     1    - 1
+    -    0         =>      3         -     2    - 1
 > EDGE CASES:
 - Insert beyond capacity --> needs resize ✅
 - Remove from empty array --> return error ✅
@@ -81,6 +91,14 @@ public class Array {
         }
         return max;
 
+    }
+
+    public void reverse(){
+        int[] reversedItems = new int[count];
+        for (int i = 0; i < count; i++){
+            reversedItems[i] = items[count - i - 1];
+        }
+        items = reversedItems;
     }
 
     public int indexOf(int item) {

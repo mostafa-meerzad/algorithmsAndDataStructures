@@ -16,8 +16,10 @@ public class Main {
 //    numbers.removeAt(10);
 //    numbers.removeAt(2);
 //    numbers.print();
-        System.out.println(numbers.indexOf(10));
-        System.out.println(numbers.indexOf(40));
-        System.out.println(numbers.indexOf(50));
+//        System.out.println(numbers.indexOf(10));
+//        System.out.println(numbers.indexOf(40));
+//        System.out.println(numbers.indexOf(50));
+        numbers.reverse();
+        numbers.print();
     }
 }

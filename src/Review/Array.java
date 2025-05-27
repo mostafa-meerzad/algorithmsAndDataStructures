@@ -13,6 +13,7 @@ REQUIREMENTS:
 3. Dynamically resize the array as needed
 4. Add new elements to the array
 5. Remove elements from the array
+6. Return the index for provided element
 
 DESIGN:
 - Use an integer array ('items') to store elements.
@@ -40,6 +41,12 @@ IMPLEMENTATION PLAN:
 - Shift element left to fill the gap
 - Decrement count
 
+> indexOf(item):
+- Iterate over array items
+- Check for a match
+    - if found, return index of matched item
+- No match found, return -1
+
 > EDGE CASES:
 - Insert beyond capacity --> needs resize ✅
 - Remove from empty array --> return error ✅
@@ -54,6 +61,14 @@ public class Array {
         items = new int[length];
     }
 
+    public int indexOf(int item){
+        for (int i = 0; i < count; i++){
+            if( items[i] == item){
+                return i;
+            }
+        }
+        return -1;
+    }
     public void removeAt(int index) {
         if (index < 0 || index >= count) {
             throw new IllegalArgumentException("Invalid index");

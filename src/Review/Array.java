@@ -24,10 +24,10 @@ IMPLEMENTATION PLAN:
 - Accept 'length' and initialize 'items = new int[length]'
 - Set 'count = 0'
 
-> print():
+> print():✅
 - Loop from 0 to 'count - 1', print each element
 
-> insert(item):
+> insert(item):✅
 - If full 'count == items.length'
     - create a new array with double the size
     - copy old elements to new array
@@ -35,15 +35,15 @@ IMPLEMENTATION PLAN:
 - Insert 'item' at 'items[count]'
 - Increment 'count'
 
-> removeAt(index):
+> removeAt(index):✅
 - Check if 'index' is valid
 - Shift element left to fill the gap
 - Decrement count
 
 > EDGE CASES:
-- Insert beyond capacity --> needs resize
-- Remove from empty array --> return error
-- Invalid index for removal --> throw exception
+- Insert beyond capacity --> needs resize ✅
+- Remove from empty array --> return error ✅
+- Invalid index for removal --> throw exception✅
 */
 
 public class Array {
@@ -54,19 +54,30 @@ public class Array {
         items = new int[length];
     }
 
-    public void insert(int item){
+    public void removeAt(int index) {
+        if (index < 0 || index >= count) {
+            throw new IllegalArgumentException("Invalid index");
+        }
+        for (int i = index; i < count - 1; i++) {
+            items[i] = items[i + 1];
+        }
+        count--;
+    }
 
-        if(items.length == count){
+    public void insert(int item) {
+
+        if (items.length == count) {
             int[] newItems = new int[items.length * 2];
-            for(int i = 0; i < items.length; i++){
+            for (int i = 0; i < items.length; i++) {
                 newItems[i] = items[i];
             }
             items = newItems;
         }
         items[count++] = item;
     }
-    public void print(){
-        for( int i = 0; i < count; i++){
+
+    public void print() {
+        for (int i = 0; i < count; i++) {
             System.out.println(items[i]);
         }
     }

@@ -10,5 +10,11 @@ public static void main(String[] args) {
     numbers.insert(30);
     numbers.insert(40);
     numbers.print();
+    System.out.println("-----------------");
+//    numbers.removeAt(0);
+//    numbers.removeAt(-1);
+//    numbers.removeAt(10);
+    numbers.removeAt(2);
+    numbers.print();
 }
 }

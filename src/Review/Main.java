@@ -9,6 +9,6 @@ public static void main(String[] args) {
     numbers.insert(20);
     numbers.insert(30);
     numbers.insert(40);
-//    numbers.print();
+    numbers.print();
 }
 }

@@ -52,13 +52,13 @@ IMPLEMENTATION PLAN:
     - if found, return index of matched item
 - No match found, return -1
 
-> max():
+> max():✅
 - Get the first element as default max
 - Iterate over all elements of the array comparing to default max
 - Found new max, update old max
 - return max
 
-> reverse():
+> reverse():✅
 - Define a new empty array,
 - Iterate over original array
 - it's important to start iteration from 0
@@ -68,6 +68,18 @@ IMPLEMENTATION PLAN:
     -    2         =>      3         -     0    - 1
     -    1         =>      3         -     1    - 1
     -    0         =>      3         -     2    - 1
+
+> intersect(array):✅
+- get a numbers array as argument
+- find common elements between two arrays
+- return array of common elements
+
+> insertAt(index, item):
+- check if index is valid
+- if full, resize array
+- shift elements right to make a gap for new item
+- insert item at given index
+
 > EDGE CASES:
 - Insert beyond capacity --> needs resize ✅
 - Remove from empty array --> return error ✅
@@ -82,6 +94,24 @@ public class Array {
         items = new int[length];
     }
 
+    public Array intersect(Array another) {
+//        int [] commons = new int[Math.min(count, another.count)];
+//        int commonsIndex = 0;// define a separate variable to track the index of the "commons" array
+        // --------------------- better implementation ------------
+        Array commons = new Array(Math.min(count, another.count));
+
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < another.count; j++) {
+                if (items[i] == another.items[j]) {
+//                    commons[commonsIndex++] = items[i];
+                    commons.insert(items[i]);
+                    break;
+                }
+            }
+        }
+        return commons;
+    }
+
     public int max() {
         int max = items[0];
         for (int i = 1; i < count; i++) {
@@ -93,9 +123,9 @@ public class Array {
 
     }
 
-    public void reverse(){
+    public void reverse() {
         int[] reversedItems = new int[count];
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < count; i++) {
             reversedItems[i] = items[count - i - 1];
         }
         items = reversedItems;

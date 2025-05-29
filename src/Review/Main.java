@@ -13,15 +13,17 @@ public class Main {
         numbers.insert(40);
         numbers.print();
         System.out.println("-----------------");
+        numbers.insertAt(4, 99);
+        numbers.print();
 
-        Array another = new Array(3);
-        another.insert(10);
-        another.insert(30);
-        another.insert(50);
-        another.print();
-        System.out.println("-----------------");
-        Array commons = numbers.intersect(another);
-        commons.print();
+//        Array another = new Array(3);
+//        another.insert(10);
+//        another.insert(30);
+//        another.insert(50);
+//        another.print();
+//        System.out.println("-----------------");
+//        Array commons = numbers.intersect(another);
+//        commons.print();
         //    numbers.removeAt(0);
 //    numbers.removeAt(-1);
 //    numbers.removeAt(10);

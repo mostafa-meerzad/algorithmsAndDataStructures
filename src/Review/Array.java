@@ -94,6 +94,17 @@ public class Array {
         items = new int[length];
     }
 
+    public void insertAt(int index, int item) {
+        if (index < 0 || index > count) {
+            throw new IllegalArgumentException("Invalid index");
+        }
+        for (int i = count - 1; i >= index; i--) {
+            items[i + 1] = items[i];
+        }
+        items[index] = item;
+        count++;
+    }
+
     public Array intersect(Array another) {
 //        int [] commons = new int[Math.min(count, another.count)];
 //        int commonsIndex = 0;// define a separate variable to track the index of the "commons" array

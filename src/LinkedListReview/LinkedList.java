@@ -36,7 +36,7 @@ IMPLEMENTATION Plan:
 
 > addFirst:
 - Create a new Node with given value.
-- ff first == null:
+- if first == null:
     - Set newNode to first
 - else
     - Set newNode.next to the current first.
@@ -51,6 +51,15 @@ public class LinkedList {
     private Node last;
 
     // addFirst
+    public void addFirst(int value) {
+        Node newNode = new Node(value);
+        newNode.setNext(first);
+        first = newNode;
+
+        if (last == null) {
+            last = newNode;
+        }
+    }
     // addLast
     // removeFirst
     // removeLast

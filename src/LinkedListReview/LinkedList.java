@@ -52,6 +52,16 @@ IMPLEMENTATION Plan:
     - Set last.next to newNode
     - Set last to newNode
 
+> removeFirst:
+- if first == null:
+    - throw an error
+- else:
+    - get the second Node (i.g. second = first.next)
+    - set first.next to null (to remove the first Node and get garbage collected)
+    - set first to second
+    - if first == null:
+        - set last to null
+
 */
 public class LinkedList {
     private Node first;
@@ -80,6 +90,20 @@ public class LinkedList {
 
     }
     // removeFirst
+
+    public void removeFirst() {
+        if (first == null) {
+            throw new IllegalStateException("List is empty");
+        } else {
+            Node second = first.getNext();
+            first.setNext(null);
+            first = second;
+            if (first == null) {
+                last = null;
+            }
+        }
+    }
+
     // removeLast
     // contains
     // indexOf

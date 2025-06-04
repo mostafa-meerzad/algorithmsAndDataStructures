@@ -62,6 +62,12 @@ IMPLEMENTATION Plan:
     - if first == null:
         - set last to null
 
+> contains:
+- start from the first node (current = first)
+- traverse the list until current != null:
+    - if current.value == value:
+        return true
+- return false
 */
 public class LinkedList {
     private Node first;
@@ -106,6 +112,17 @@ public class LinkedList {
 
     // removeLast
     // contains
+    public boolean contains(int value) {
+        Node current = first;
+        while(current != null){
+            if(current.getValue() == value){
+                return true;
+            }
+            current = current.getNext();
+        }
+        return false;
+
+    }
     // indexOf
 
 }

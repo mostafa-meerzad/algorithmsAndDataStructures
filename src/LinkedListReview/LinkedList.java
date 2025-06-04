@@ -79,6 +79,17 @@ IMPLEMENTATION Plan:
     - increase the index by 1 in each iteration
 - return -1
 
+> removeLast:
+- if first == null:
+    - throw an error
+- if first == last:
+    - set first and last to null
+- otherwise
+    - start from first
+    - traverse the list until current.next == last:
+    - set current.next to null
+    - set last to current
+
 */
 public class LinkedList {
     private Node first;
@@ -122,6 +133,23 @@ public class LinkedList {
     }
 
     // removeLast
+
+    public void removeLast(){
+        if (first == null){
+            throw new IllegalStateException("List is empty");
+        }
+        if (first == last){
+            first = last = null;
+            return;
+        }
+
+        Node current = first;
+        while (current.getNext() != last){
+            current = current.getNext();
+        }
+        current.setNext(null);
+        last = current;
+    }
     // contains
     public boolean contains(int value) {
         Node current = first;

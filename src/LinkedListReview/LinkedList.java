@@ -68,6 +68,17 @@ IMPLEMENTATION Plan:
     - if current.value == value:
         return true
 - return false
+
+> indexOf:
+- maintain an index starting from 0
+- start from the first node (current = first)
+- traverse the list until current != null:
+- if current.value == value:
+    - return index
+- else
+    - increase the index by 1 in each iteration
+- return -1
+
 */
 public class LinkedList {
     private Node first;
@@ -114,8 +125,8 @@ public class LinkedList {
     // contains
     public boolean contains(int value) {
         Node current = first;
-        while(current != null){
-            if(current.getValue() == value){
+        while (current != null) {
+            if (current.getValue() == value) {
                 return true;
             }
             current = current.getNext();
@@ -123,6 +134,19 @@ public class LinkedList {
         return false;
 
     }
+
     // indexOf
 
+    public int indexOf(int value) {
+        int index = 0;
+        Node current = first;
+        while (current != null) {
+            if (current.getValue() == value) {
+                return index;
+            }
+            current = current.getNext();
+            index++;
+        }
+        return -1;
+    }
 }

@@ -44,6 +44,13 @@ IMPLEMENTATION Plan:
 - if last == null:
     - also set last to newNode.
 
+> addLast:
+- create new Node with the value.
+- if the first is empty (first == null):
+    - set first and last to newNode
+- else:
+    - Set last.next to newNode
+    - Set last to newNode
 
 */
 public class LinkedList {
@@ -60,7 +67,18 @@ public class LinkedList {
             last = newNode;
         }
     }
+
     // addLast
+    public void addLast(int value) {
+        Node newNode = new Node(value);
+        if (first == null) {
+            first = last = newNode;
+        } else {
+            last.setNext(newNode);
+            last = newNode;
+        }
+
+    }
     // removeFirst
     // removeLast
     // contains

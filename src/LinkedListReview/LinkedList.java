@@ -134,21 +134,17 @@ public class LinkedList {
 
     // removeLast
 
-    public void removeLast(){
-        if (first == null){
+    public void removeFirst() {
+        if (first == null) {
             throw new IllegalStateException("List is empty");
+        } else {
+            Node second = first.getNext();
+            first.setNext(null);
+            first = second;
+            if (first == null) {
+                last = null;
+            }
         }
-        if (first == last){
-            first = last = null;
-            return;
-        }
-
-        Node current = first;
-        while (current.getNext() != last){
-            current = current.getNext();
-        }
-        current.setNext(null);
-        last = current;
     }
     // contains
     public boolean contains(int value) {

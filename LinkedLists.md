@@ -947,4 +947,82 @@ last =current;
 You're thinking *exactly* like someone learning how to bend a data structure to their will. Want to try implementing
 `contains` or `indexOf` next and I’ll review it?
 
+## Having class inside another class
 
+😄 Yup — **you absolutely can define a class inside another class** in Java! And what Mosh did is a very common, clean pattern for data structures like linked lists.
+
+---
+
+## 🔍 What You're Seeing: **Inner Class**
+
+In Java, when you define a class inside another class, it's called an **inner class**.
+
+Example:
+
+```java
+public class LinkedList {
+    private class Node {
+        private int value;
+        private Node next;
+
+        public Node(int value) {
+            this.value = value;
+        }
+    }
+
+    private Node first;
+    private Node last;
+
+    // Your linked list methods...
+}
+```
+
+---
+
+## ✅ Why Do This?
+
+1. **Encapsulation**:
+   `Node` is a helper class *only used by* `LinkedList`. So keeping it *inside* `LinkedList` hides it from the rest of the program. That's clean design.
+
+2. **No Pollution**:
+   You don’t clutter your `LinkedListReview` package with a separate `Node.java` file — just keep it all inside one file.
+
+3. **Looks Cleaner**:
+   You're telling other developers:
+   👉 "Hey, this `Node` class isn’t meant to be used outside `LinkedList`. It's internal."
+
+---
+
+## 🔒 Access Modifiers
+
+Inner classes can be:
+
+* `private` — used *only inside* the outer class
+* `public` or `protected` — if you want to expose them
+
+Since the `Node` class is usually **only relevant to the list**, `private` is the best choice here.
+
+---
+
+## 🧠 Bonus Tip
+
+Inside the outer class, you can use `Node` directly — no need to write `LinkedList.Node`.
+
+But **outside**, you’d write:
+
+```java
+LinkedList.Node node = new LinkedList().new Node(5); // if not private
+```
+
+(But that’s rarely needed — because again, we usually **hide** it with `private`.)
+
+---
+
+## ✅ So to summarize:
+
+* ✅ Yes, you can define a class inside another class
+* ✅ It's called an **inner class**
+* ✅ It’s great for helper types like `Node`
+* ✅ Mosh used it correctly — and *now you understand why* 🎯
+
+Wanna try rewriting your `Node` as a private inner class inside `LinkedList`? I can help if you’d like a mini refactor.

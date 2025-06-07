@@ -8,8 +8,12 @@ public class Main {
         list.addFirst(10);
         list.addLast(20);
         list.addLast(30);
-        System.out.println(list.contains(20));
-        System.out.println(list.indexOf(10));
+//        System.out.println(list.contains(20));
+//        System.out.println(list.indexOf(10));
+        list.addFirst(5);
+//        System.out.println(list);
+        list.removeFirst();
+        list.removeLast();
         ;
     }
 }

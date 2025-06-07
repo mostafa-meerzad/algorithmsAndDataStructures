@@ -134,16 +134,21 @@ public class LinkedList {
 
     // removeLast
 
-    public void removeFirst() {
+    public void removeLast() {
         if (first == null) {
             throw new IllegalStateException("List is empty");
-        } else {
-            Node second = first.getNext();
-            first.setNext(null);
-            first = second;
-            if (first == null) {
-                last = null;
-            }
+        }
+        if (first == last) {
+            first = last = null;
+        }
+        else {
+        var current = first;
+        while (current.getNext() != last){
+            current = current.getNext();
+
+        }
+        last = current;
+        last.setNext(null);
         }
     }
     // contains

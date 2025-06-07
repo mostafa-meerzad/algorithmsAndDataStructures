@@ -90,6 +90,11 @@ IMPLEMENTATION Plan:
     - set current.next to null
     - set last to current
 
+> size:
+- have a pointer, size = 0
+- traverse the list
+- increment the pointer
+- return pointer
 */
 public class LinkedList {
     private Node first;
@@ -140,17 +145,17 @@ public class LinkedList {
         }
         if (first == last) {
             first = last = null;
-        }
-        else {
-        var current = first;
-        while (current.getNext() != last){
-            current = current.getNext();
+        } else {
+            var current = first;
+            while (current.getNext() != last) {
+                current = current.getNext();
 
-        }
-        last = current;
-        last.setNext(null);
+            }
+            last = current;
+            last.setNext(null);
         }
     }
+
     // contains
     public boolean contains(int value) {
         Node current = first;
@@ -178,4 +183,16 @@ public class LinkedList {
         }
         return -1;
     }
+
+    public int size() {
+        var size = 0;
+        var current = first;
+        while (current != null) {
+            size++;
+            current = current.getNext();
+        }
+        return size;
+    }
+
+
 }

@@ -207,4 +207,21 @@ public class LinkedList {
         return array;
     }
 
+    public void reverse(){
+        if (first == null) return;
+
+        var previous = first;
+        var current = first.getNext();
+
+        while(current != null){
+            var next = current.getNext();
+            current.setNext(previous);
+            previous = current;
+            current = next;
+        }
+        last = first;
+        last.setNext(null);
+        first = previous;
+    }
+
 }

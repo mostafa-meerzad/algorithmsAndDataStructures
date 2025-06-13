@@ -18,7 +18,8 @@ public class Main {
 //        list.removeFirst();
 //        list.removeLast();
         System.out.println(list.size());
-        System.out.println(Arrays.toString(list.toArray()));
+//        System.out.println(Arrays.toString(list.toArray()));
+        System.out.println(list.getKthFromTheEnd(0));
         ;
     }
 }

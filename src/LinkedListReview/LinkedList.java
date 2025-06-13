@@ -95,6 +95,38 @@ IMPLEMENTATION Plan:
 - traverse the list
 - increment the pointer
 - return pointer
+
+> getKthFromTheEnd(k):
+- use two pointers technique
+- define two pointers "slow" and "fast"
+- move fast k times forward
+    - use a for loop to move fast k steps
+- traverse the list from start to end
+    - move both pointers one step forward
+- return slow
+
+define two pointers take the "fast" pointer to the end and look back at the "slow" pointer
+that is the node we want, but the tricky part is to find how many steps they are apart
+
+ - our "fast" pointer reached the end good, we look at the "slow" pointer
+ [10 => 20 => 30 => 40 => 50]
+              *            *
+but to accurately get the third element from the end we need to find how many steps they are apart
+as we can see when the "fast" has reached the end now how many step are we apart to get the "third"
+2 steps => 30 -> one step (getNext()) 40 -> two step (getNext()) 50
+so we need to move "fast" two steps
+
+"for (i = 0; i < k - 1; i++) fast = fast.next()"
+
+ k = 1 => 50
+ k = 2 => 40
+ k = 3 => 30
+
+then we traverse the list until the "fast" equals the "last" pointer
+move both pointers one step ahead
+
+return the "slow" pointer
+
 */
 public class LinkedList {
     private Node first;
@@ -207,13 +239,13 @@ public class LinkedList {
         return array;
     }
 
-    public void reverse(){
+    public void reverse() {
         if (first == null) return;
 
         var previous = first;
         var current = first.getNext();
 
-        while(current != null){
+        while (current != null) {
             var next = current.getNext();
             current.setNext(previous);
             previous = current;
@@ -222,6 +254,28 @@ public class LinkedList {
         last = first;
         last.setNext(null);
         first = previous;
+    }
+
+    public int getKthFromTheEnd(int k) {
+        if (first == null) {
+            throw new IllegalStateException("List is empty");
+        }
+        if (k < 1 || k > size()) {
+            throw new IllegalArgumentException("k should be between 0 and size of the list");
+        }
+
+        var slow = first;
+        var fast = first;
+
+        for (int i = 0; i < k - 1; i++) {
+            fast = fast.getNext();
+        }
+        while (fast != last) {
+            fast = fast.getNext();
+            slow = slow.getNext();
+        }
+        return slow.getValue();
+
     }
 
 }

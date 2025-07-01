@@ -1,70 +1,88 @@
-Stacks are a fundamental data structure in computer science that operate on the **Last In, First Out (LIFO)** principle. This means that the last element added to the stack is the first one to be removed, similar to a stack of plates in a cafeteria.
+# Stack
+
+Stacks are a fundamental data structure in computer science that operates on the **Last In, First Out (LIFO)**
+principle. This means that the last element added to the stack is the first one to be removed, similar to a stack of
+plates in a cafeteria.
 
 ---
 
+## Usages of Stacks
+
+- Implement the Undo feature.
+- Build compilers (eg syntax checking)
+- Evaluate expressions (eg 1 + 2 * 3)
+- Build navigation (eg forward/backward)
+
 ## **Key Concepts**
 
-1. **Structure**: 
-   - A stack is a collection of elements with two main operations:
-     - **Push**: Adds an element to the top of the stack.
-     - **Pop**: Removes and returns the top element from the stack.
+1. **Structure**:
+    - A stack is a collection of elements with four main operations:
+        - **Push**: Adds an element to the top of the stack.
+        - **Pop**: Removes and returns the top element from the stack.
+        - **Peek**: Returns the top element without removing it from the stack.
+        - **IsEmpty**: which tells up whether the stack is empty or not
+          **Note**: the time complexity of these operations is **O(1)** they all run in a constant time
+          **Note**: the time complexity of these operations is **O(1)** they all run in a constant time
 
-2. **LIFO Principle**: 
-   - The most recently added element is the first to be removed, like taking the top plate from a stack.
+2. **LIFO Principle**:
+    - The most recently added element is the first to be removed, like taking the top plate from a stack.
 
-3. **Top of the Stack**: 
-   - The "top" refers to the most recently added element, which will be accessed first when performing operations.
+3. **Top of the Stack**:
+    - The "top" refers to the most recently added element, which will be accessed first when performing operations.
 
 4. **Access**:
-   - Unlike arrays or linked lists, you can only access the element at the top of the stack directly. Other elements are "hidden" below the top.
+    - Unlike arrays or linked lists, you can only access the element at the top of the stack directly. Other elements
+      are "hidden" below the top.
 
 ---
 
 ## **Basic Operations**
 
 1. **Push**
-   - Adds an element to the top of the stack.
-   - Example: 
-     - Stack: [1, 2, 3]
-     - Push(4)
-     - New Stack: [1, 2, 3, 4]
+    - Adds an element to the top of the stack.
+    - Example:
+        - Stack: [1, 2, 3]
+        - Push(4)
+        - New Stack: [1, 2, 3, 4]
 
 2. **Pop**
-   - Removes and returns the top element of the stack.
-   - Example:
-     - Stack: [1, 2, 3, 4]
-     - Pop()
-     - Popped Element: 4
-     - New Stack: [1, 2, 3]
+    - Removes and returns the top element of the stack.
+    - Example:
+        - Stack: [1, 2, 3, 4]
+        - Pop()
+        - Popped Element: 4
+        - New Stack: [1, 2, 3]
 
 3. **Peek (or Top)**
-   - Returns the element at the top of the stack without removing it.
-   - Example:
-     - Stack: [1, 2, 3, 4]
-     - Peek() → 4
-     - Stack remains: [1, 2, 3, 4]
+    - Returns the element at the top of the stack without removing it.
+    - Example:
+        - Stack: [1, 2, 3, 4]
+        - Peek() → 4
+        - Stack remains: [1, 2, 3, 4]
 
 4. **isEmpty**
-   - Checks if the stack is empty.
-   - Example:
-     - Stack: []
-     - isEmpty() → True
+    - Checks if the stack is empty.
+    - Example:
+        - Stack: []
+        - isEmpty() → True
 
 5. **Size**
-   - Returns the number of elements in the stack.
-   - Example:
-     - Stack: [1, 2, 3]
-     - Size() → 3
+    - Returns the number of elements in the stack.
+    - Example:
+        - Stack: [1, 2, 3]
+        - Size() → 3
 
 ---
 
 ## **Implementing a Stack**
 
 Stacks can be implemented using:
+
 1. **Arrays**: A dynamic or fixed-size array can be used to represent a stack.
 2. **Linked Lists**: A linked list can represent a stack where elements are added/removed from the head.
 
 ### **Array-Based Stack (Java Example)**
+
 ```java
 class Stack {
     private int[] stack;
@@ -120,6 +138,7 @@ class Stack {
 ---
 
 ### **Linked List-Based Stack (Java Example)**
+
 ```java
 class Node {
     int value;
@@ -178,33 +197,35 @@ class Stack {
 ## **Applications of Stacks**
 
 1. **Expression Evaluation**:
-   - Used in evaluating postfix expressions (e.g., Reverse Polish Notation).
+    - Used in evaluating postfix expressions (e.g., Reverse Polish Notation).
 
 2. **Expression Conversion**:
-   - Converts infix expressions (e.g., `A + B`) to postfix (`AB+`) or prefix (`+AB`).
+    - Converts infix expressions (e.g., `A + B`) to postfix (`AB+`) or prefix (`+AB`).
 
 3. **Backtracking**:
-   - E.g., Undo functionality in text editors or navigating browser history.
+    - E.g., Undo functionality in text editors or navigating browser history.
 
 4. **Function Calls**:
-   - The call stack in programming uses a stack to manage function calls and returns.
+    - The call stack in programming uses a stack to manage function calls and returns.
 
 5. **Parsing**:
-   - Used in parsing expressions, compilers, and syntax checking (e.g., matching parentheses).
+    - Used in parsing expressions, compilers, and syntax checking (e.g., matching parentheses).
 
 6. **DFS (Depth First Search)**:
-   - The stack is used to keep track of visited nodes in graph traversal.
+    - The stack is used to keep track of visited nodes in graph traversal.
 
 ---
 
 ## **Advantages and Limitations**
 
 ### **Advantages**
+
 - Simple and easy to implement.
 - Useful for managing temporary data.
 - Memory-efficient for operations that strictly follow LIFO.
 
 ### **Limitations**
+
 - Restricted access: Only the top element is accessible.
 - Fixed size (for array-based implementations): Requires resizing when full.
 - No random access: Unlike arrays, you cannot access arbitrary elements directly.

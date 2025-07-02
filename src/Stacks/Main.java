@@ -14,9 +14,19 @@ public class Main {
 //        System.out.println(stack.pop());
 //        System.out.println(stack);
 
-        String str = "abc";
-        StringReverser reverser = new StringReverser();
-        String result = reverser.reverser(null);
+//        String str = "abc";
+//        StringReverser reverser = new StringReverser();
+//        String result = reverser.reverser(null);
+//        System.out.println(result);
+
+//        String str = "(som{eth})ing";
+//        Boolean balanced = new BalancedExpression().isBalanced(str);
+//        System.out.println(balanced);
+
+//        --------------------------
+        String str = "(abc))";
+        Expression exp = new Expression();
+        boolean result = exp.isBalanced(str);
         System.out.println(result);
 
 

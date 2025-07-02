@@ -1,26 +1,41 @@
 package Stacks;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class Expression {
+    private final List<Character> leftBrackets = Arrays.asList('(', '{', '[', '<');
+    private final List<Character> rightBrackets = Arrays.asList(')', '}', ']', '>');
+
     public boolean isBalanced(String expression) {
         Stack<Character> stack = new Stack<>();
 
-        for (char c : expression.toCharArray()) {
+        for (char ch : expression.toCharArray()) {
 
-            if (c == '(' || c == '{' || c == '[' || c == '<') {
-                stack.push(c);
+            if (isLeftBracket(ch)) {
+                stack.push(ch);
             }
-            if (c == ')' || c == ']' || c == '}' || c == '>') {
+            if (isRightBracket(ch)) {
                 if (stack.isEmpty()) return false;
+
                 var top = stack.pop();
-                if (c == ')' && top != '(' ||
-                    c == ']' && top != '[' ||
-                    c == '}' && top != '{' ||
-                    c == '>' && top != '<'
-                ) return false;
+                if (bracketsMatch(top, ch)) return false;
             }
         }
         return stack.isEmpty();
+    }
+
+    private boolean isLeftBracket(char ch) {
+
+        return leftBrackets.contains(ch);
+    }
+
+    private boolean isRightBracket(char ch) {
+        return rightBrackets.contains(ch);
+    }
+
+    private boolean bracketsMatch(char left, char right) {
+        return leftBrackets.indexOf(left) == rightBrackets.indexOf(right);
     }
 }

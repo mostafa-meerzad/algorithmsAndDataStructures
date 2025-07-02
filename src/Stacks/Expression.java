@@ -8,12 +8,17 @@ public class Expression {
 
         for (char c : expression.toCharArray()) {
 
-            if (c == '(') {
+            if (c == '(' || c == '{' || c == '[' || c == '<') {
                 stack.push(c);
             }
-            if (c == ')') {
+            if (c == ')' || c == ']' || c == '}' || c == '>') {
                 if (stack.isEmpty()) return false;
-                stack.pop();
+                var top = stack.pop();
+                if (c == ')' && top != '(' ||
+                    c == ']' && top != '[' ||
+                    c == '}' && top != '{' ||
+                    c == '>' && top != '<'
+                ) return false;
             }
         }
         return stack.isEmpty();

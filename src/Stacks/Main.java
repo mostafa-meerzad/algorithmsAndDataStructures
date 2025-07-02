@@ -24,7 +24,7 @@ public class Main {
 //        System.out.println(balanced);
 
 //        --------------------------
-        String str = "(abc))";
+        String str = "(a<bc>{()})";
         Expression exp = new Expression();
         boolean result = exp.isBalanced(str);
         System.out.println(result);

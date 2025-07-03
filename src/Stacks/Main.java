@@ -1,7 +1,5 @@
 package Stacks;
 
-import java.util.Stack;
-
 public class Main {
     public static void main(String[] args) {
 //
@@ -24,10 +22,25 @@ public class Main {
 //        System.out.println(balanced);
 
 //        --------------------------
-        String str = "(a<bc>{()})";
-        Expression exp = new Expression();
-        boolean result = exp.isBalanced(str);
-        System.out.println(result);
+//        String str = "(a<bc>{()})";
+//        Expression exp = new Expression();
+//        boolean result = exp.isBalanced(str);
+//        System.out.println(result);
+
+        Stack stack = new Stack();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(30);
+        stack.push(30);
+        stack.pop();
+        stack.pop();
+        stack.pop();
+//        stack.pop();
+//        stack.pop();
+//        stack.pop();
+        System.out.println(stack.size());
+        System.out.println(stack.toString());
 
 
 

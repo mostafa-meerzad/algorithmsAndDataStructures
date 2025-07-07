@@ -25,15 +25,14 @@ public class Main {
 
 
     }
-
-    public static void reverse(Queue<Integer> queue) {
+    public static void reverse(Queue<Integer> queue){
         Stack<Integer> stack = new Stack<>();
 
-        while (!queue.isEmpty()) {
+        while(!queue.isEmpty()){
             stack.add(queue.remove());
         }
 
-        while (!stack.isEmpty()) {
+        while(!stack.isEmpty()){
             queue.add(stack.pop());
         }
 

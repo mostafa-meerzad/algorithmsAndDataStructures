@@ -47,204 +47,153 @@ There are several ways to implement a queue in Java:
 
 ---
 
-## ✅ Let's Build a Queue Step by Step (Using Array)
+## Notes on Java Queue
 
----
+In Java, the Queue interface is part of the Java Collections Framework and represents a collection designed for holding
+elements prior to processing. It adheres to the First-In,
 
-### Step 1: Define Class and Fields
+First-Out (FIFO) principle, meaning elements are added to
+the "rear" of the queue and removed from the "front."
+
+### Key Characteristics:
+
+- FIFO Ordering: Elements are retrieved in the same order they were inserted.
+- Interface: Queue is an interface, and various concrete implementations are available, such as LinkedList (which also
+  implements Deque), PriorityQueue, and implementations within the java.util.concurrent package like ArrayBlockingQueue
+  and LinkedBlockingQueue.
+-
+
+### Core Methods:
+
+- The Queue interface defines several methods for interacting with the queue:
+  Adding Elements:
+- add(E e): Inserts the specified element into the queue. Throws an IllegalStateException if the queue is full.
+- offer(E e): Inserts the specified element into the queue. Returns true on success, false if the queue is full.
+- Removing Elements:
+- remove(): Retrieves and removes the head of the queue. Throws a NoSuchElementException if the queue is empty.
+- poll(): Retrieves and removes the head of the queue. Returns null if the queue is empty.
+  Inspecting Elements (without removal):
+- element(): Retrieves, but does not remove, the head of the queue. Throws a NoSuchElementException if the queue is
+  empty.
+- peek(): Retrieves, but does not remove, the head of the queue. Returns null if the queue is empty.
+
+### Code Example
 
 ```java
-public class MyQueue {
-    private int[] data;
-    private int front;  // points to the front element
-    private int rear;   // points to the next insertion position
-    private int size;   // number of elements
-    private int capacity;
+import java.util.LinkedList;
+import java.util.Queue;
 
-    public MyQueue(int capacity) {
-        this.capacity = capacity;
-        data = new int[capacity];
-        front = 0;
-        rear = 0;
-        size = 0;
+public class JavaQueueExample {
+    public static void main(String[] args) {
+        Queue<String> queue = new LinkedList<>();
+
+        // Adding elements
+        queue.offer("Apple");
+        queue.offer("Banana");
+        queue.offer("Cherry");
+
+        System.out.println("Queue after adding elements: " + queue); // Output: [Apple, Banana, Cherry]
+
+        // Peeking at the head
+        String head = queue.peek();
+        System.out.println("Head of the queue: " + head); // Output: Apple
+
+        // Removing elements
+        String removedElement = queue.poll();
+        System.out.println("Removed element: " + removedElement); // Output: Apple
+        System.out.println("Queue after removing an element: " + queue); // Output: [Banana, Cherry]
+
+        // Checking if the queue is empty
+        System.out.println("Is queue empty? " + queue.isEmpty()); // Output: false
     }
 }
 ```
 
----
-
-### Step 2: Enqueue Operation
+## Reverse a Queue
 
 ```java
-public void enqueue(int value) {
-    if (size == capacity) {
-        System.out.println("Queue is full!");
-        return;
-    }
-    data[rear] = value;
-    rear = (rear + 1) % capacity;  // circular increment
-    size++;
-}
-```
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
----
+public class ReverseQueue {
+    public static void reverseQueue(Queue<Integer> queue) {
+        Stack<Integer> stack = new Stack<>();
 
-### Step 3: Dequeue Operation
-
-```java
-public int dequeue() {
-    if (isEmpty()) {
-        System.out.println("Queue is empty!");
-        return -1; // or throw exception
-    }
-    int removed = data[front];
-    front = (front + 1) % capacity; // circular increment
-    size--;
-    return removed;
-}
-```
-
----
-
-### Step 4: Peek Operation
-
-```java
-public int peek() {
-    if (isEmpty()) {
-        System.out.println("Queue is empty!");
-        return -1;
-    }
-    return data[front];
-}
-```
-
----
-
-### Step 5: Utility Methods
-
-```java
-public boolean isEmpty() {
-    return size == 0;
-}
-
-public int size() {
-    return size;
-}
-```
-
----
-
-### 🔹 Full Working Example
-
-```java
-public class MyQueue {
-    private int[] data;
-    private int front;
-    private int rear;
-    private int size;
-    private int capacity;
-
-    public MyQueue(int capacity) {
-        this.capacity = capacity;
-        data = new int[capacity];
-        front = 0;
-        rear = 0;
-        size = 0;
-    }
-
-    public void enqueue(int value) {
-        if (size == capacity) {
-            System.out.println("Queue is full!");
-            return;
+        // Step 1: Remove from queue and push into stack
+        while (!queue.isEmpty()) {
+            stack.push(queue.remove());
         }
-        data[rear] = value;
-        rear = (rear + 1) % capacity;
-        size++;
-    }
 
-    public int dequeue() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty!");
-            return -1;
+        // Step 2: Pop from stack and add back to queue
+        while (!stack.isEmpty()) {
+            queue.add(stack.pop());
         }
-        int removed = data[front];
-        front = (front + 1) % capacity;
-        size--;
-        return removed;
     }
 
-    public int peek() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty!");
-            return -1;
-        }
-        return data[front];
-    }
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedList<>();
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
+        // Fill queue
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+        queue.add(40);
+        queue.add(50);
 
-    public int size() {
-        return size;
-    }
+        System.out.println("Original Queue: " + queue);
 
-    public void printQueue() {
-        System.out.print("Queue: ");
-        for (int i = 0; i < size; i++) {
-            int index = (front + i) % capacity;
-            System.out.print(data[index] + " ");
-        }
-        System.out.println();
+        reverseQueue(queue);
+
+        System.out.println("Reversed Queue: " + queue);
     }
 }
+
 ```
 
----
-
-### 🔹 Sample Usage:
+### AS a Method
 
 ```java
+package Queue;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+import java.util.Stack;
+
 public class Main {
     public static void main(String[] args) {
-        MyQueue queue = new MyQueue(5);
+        Queue<Integer> queue = new ArrayDeque<>();
 
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        queue.printQueue(); // Queue: 10 20 30
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+        System.out.println("Queue after adding elements: " + queue);
+//        queue.remove();
+//        System.out.println("Queue after removing an element: " + queue);
+//        System.out.println(queue.peek());
+//        queue.poll();
+//        queue.poll();
+//        queue.remove();
+//        System.out.println("Queue after removing an element: " + queue);
 
-        System.out.println("Dequeued: " + queue.dequeue()); // 10
-        queue.printQueue(); // Queue: 20 30
+        reverse(queue);
+        System.out.println("Reversed queue: " + queue);
 
-        queue.enqueue(40);
-        queue.enqueue(50);
-        queue.enqueue(60); // Queue is full!
-        queue.printQueue(); // Queue: 20 30 40 50
 
-        System.out.println("Front: " + queue.peek()); // 20
     }
+
+    public static void reverse(Queue<Integer> queue) {
+        Stack<Integer> stack = new Stack<>();
+
+        while (!queue.isEmpty()) {
+            stack.add(queue.remove());
+        }
+
+        while (!stack.isEmpty()) {
+            queue.add(stack.pop());
+        }
+
+    }
+
 }
 ```
-
----
-
-## 🧠 Visual Example
-
-Let’s say you add:
-`enqueue(10)` → \[10]
-`enqueue(20)` → \[10, 20]
-`enqueue(30)` → \[10, 20, 30]
-`dequeue()` → removes `10`, becomes \[20, 30]
-
----
-
-## 📝 Summary
-
-* Queue follows FIFO.
-* Implemented using array, linked list, or Java's built-in tools.
-* Use a circular array to reuse space when elements are dequeued.
-* Operations: `enqueue`, `dequeue`, `peek`, `isEmpty`, `size`.
-
----
-

@@ -66,14 +66,14 @@ public class Main {
         doubleStack.push2(60);
         doubleStack.push2(70);
 //        System.out.println(doubleStack);
-        System.out.println(doubleStack.toString1());
+//        System.out.println(doubleStack.toString1());
 //        doubleStack.pop1();
 //        doubleStack.pop2();
 //        doubleStack.pop2();
 //        doubleStack.pop2();
 //        doubleStack.pop2();
 //        System.out.println(doubleStack);
-        System.out.println(doubleStack.toString2());
+//        System.out.println(doubleStack.toString2());
 
     }
 }

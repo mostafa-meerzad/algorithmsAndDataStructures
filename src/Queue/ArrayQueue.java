@@ -1,5 +1,7 @@
 package Queue;
 
+import java.util.Arrays;
+
 public class ArrayQueue {
     private int[] queue = new int[5];
     private int front;
@@ -13,7 +15,8 @@ public class ArrayQueue {
         if (isFull()) {
             throw new IllegalArgumentException("Queue is full");
         }
-        queue[rear++] = item;
+        queue[rear] = item;
+        rear = (rear + 1) % queue.length;
         size++;
     }
 
@@ -21,8 +24,11 @@ public class ArrayQueue {
         if (isEmpty()) {
             throw new IllegalArgumentException("Queue is empty");
         }
+        var item = queue[front];
+        queue[front] = 0;
+        front = (front + 1) % queue.length;
         size--;
-        return queue[front++];
+        return item;
     }
 
     public int peek() {
@@ -30,7 +36,7 @@ public class ArrayQueue {
     }
 
     public boolean isEmpty() {
-        return front == rear;
+        return size == 0;
     }
 
     public boolean isFull() {
@@ -39,6 +45,10 @@ public class ArrayQueue {
 
     public int size() {
         return size;
+    }
+    @Override
+    public String toString(){
+        return Arrays.toString(queue);
     }
 
 }

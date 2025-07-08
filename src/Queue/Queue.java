@@ -10,13 +10,22 @@ public class Queue {
         queue.enqueue(30);
         queue.enqueue(40);
         queue.enqueue(50);
-        queue.dequeue();
-        queue.dequeue();
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
         queue.enqueue(70);
+        System.out.println(queue.dequeue());
+//        System.out.println(queue.dequeue());
+//        System.out.println(queue.dequeue());
+//        queue.dequeue();
 
         System.out.println("size of queue: " + queue.size());
-        System.out.println("just removed: " + queue.dequeue());
-        System.out.println("size of queue: " + queue.size());
+        System.out.println(queue.toString());
+//        System.out.println("just removed: " + queue.dequeue());
+//        System.out.println("size of queue: " + queue.size());
+        System.out.println(4%5);
 
     }
 }

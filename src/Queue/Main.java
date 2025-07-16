@@ -6,12 +6,12 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        Queue<Integer> queue = new ArrayDeque<>();
+//        Queue<Integer> queue = new ArrayDeque<>();
 
-        queue.add(10);
-        queue.add(20);
-        queue.add(30);
-        System.out.println("Queue after adding elements: " + queue);
+//        queue.add(10);
+//        queue.add(20);
+//        queue.add(30);
+//        System.out.println("Queue after adding elements: " + queue);
 //        queue.remove();
 //        System.out.println("Queue after removing an element: " + queue);
 //        System.out.println(queue.peek());
@@ -20,8 +20,21 @@ public class Main {
 //        queue.remove();
 //        System.out.println("Queue after removing an element: " + queue);
 
-        reverse(queue);
-        System.out.println("Reversed queue: " + queue);
+//        reverse(queue);
+//        System.out.println("Reversed queue: " + queue);
+
+        //-------------------- priority queue -------------------------
+        PriorityQueue pq = new PriorityQueue(5);
+        pq.enqueue(5);
+        pq.enqueue(2);
+        pq.enqueue(4);
+        pq.enqueue(1);
+
+//        while(!pq.isEmpty()){
+//            System.out.println(pq.dequeue());
+//        }
+        System.out.println(pq.dequeue());
+        System.out.println(pq.dequeue());
 
 
     }

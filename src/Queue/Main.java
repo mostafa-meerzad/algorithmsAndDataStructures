@@ -24,17 +24,29 @@ public class Main {
 //        System.out.println("Reversed queue: " + queue);
 
         //-------------------- priority queue -------------------------
-        PriorityQueue pq = new PriorityQueue(5);
-        pq.enqueue(5);
-        pq.enqueue(2);
-        pq.enqueue(4);
-        pq.enqueue(1);
+//        PriorityQueue pq = new PriorityQueue(5);
+//        pq.enqueue(5);
+//        pq.enqueue(2);
+//        pq.enqueue(4);
+//        pq.enqueue(1);
 
 //        while(!pq.isEmpty()){
 //            System.out.println(pq.dequeue());
 //        }
-        System.out.println(pq.dequeue());
-        System.out.println(pq.dequeue());
+//        System.out.println(pq.dequeue());
+//        System.out.println(pq.dequeue());
+
+// ----------------------  queue reverser  ---------------------
+
+        QueueReverser reverseQueue = new QueueReverser();
+        reverseQueue.enqueue(10);
+        reverseQueue.enqueue(20);
+        reverseQueue.enqueue(30);
+        reverseQueue.enqueue(40);
+        reverseQueue.enqueue(50);
+        reverseQueue.reverse(3);
+//        System.out.println(reverseQueue.reverse(3));
+        System.out.println(reverseQueue.print());
 
 
     }

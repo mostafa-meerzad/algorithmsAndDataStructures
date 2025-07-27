@@ -38,16 +38,27 @@ public class Main {
 
 // ----------------------  queue reverser  ---------------------
 
-        QueueReverser reverseQueue = new QueueReverser();
-        reverseQueue.enqueue(10);
-        reverseQueue.enqueue(20);
-        reverseQueue.enqueue(30);
-        reverseQueue.enqueue(40);
-        reverseQueue.enqueue(50);
-        reverseQueue.reverse(3);
-//        System.out.println(reverseQueue.reverse(3));
-        System.out.println(reverseQueue.print());
+//        QueueReverser reverseQueue = new QueueReverser();
+//        reverseQueue.enqueue(10);
+//        reverseQueue.enqueue(20);
+//        reverseQueue.enqueue(30);
+//        reverseQueue.enqueue(40);
+//        reverseQueue.enqueue(50);
+//        reverseQueue.reverse(3);
+////        System.out.println(reverseQueue.reverse(3));
+//        System.out.println(reverseQueue.print());
 
+//        --------------------- linkedList Queue ----------------
+
+        LinkedListQueue queue = new LinkedListQueue();
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        System.out.println(queue.size());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        System.out.println(queue.peek());
+        System.out.println(queue.size());
 
     }
     public static void reverse(Queue<Integer> queue){

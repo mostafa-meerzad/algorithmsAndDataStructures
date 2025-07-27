@@ -50,16 +50,26 @@ public class Main {
 
 //        --------------------- linkedList Queue ----------------
 
-        LinkedListQueue queue = new LinkedListQueue();
-        queue.enqueue(10);
-        queue.enqueue(20);
-        queue.enqueue(30);
-        System.out.println(queue.size());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.peek());
-        System.out.println(queue.size());
+//        LinkedListQueue queue = new LinkedListQueue();
+//        queue.enqueue(10);
+//        queue.enqueue(20);
+//        queue.enqueue(30);
+//        System.out.println(queue.size());
+//        System.out.println(queue.dequeue());
+//        System.out.println(queue.dequeue());
+//        System.out.println(queue.peek());
+//        System.out.println(queue.size());
 
+//        -------------------------- stack with two queues ----------------
+
+
+        StackWithTwoQueues stackWithTwoQueues = new StackWithTwoQueues();
+        stackWithTwoQueues.push(10);
+        stackWithTwoQueues.push(20);
+        stackWithTwoQueues.push(30);
+        System.out.println(stackWithTwoQueues.pop());
+        System.out.println(stackWithTwoQueues.pop());
+        System.out.println(stackWithTwoQueues.pop());
     }
     public static void reverse(Queue<Integer> queue){
         Stack<Integer> stack = new Stack<>();

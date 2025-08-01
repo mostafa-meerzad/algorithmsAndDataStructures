@@ -143,6 +143,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
+      //Map is the interface___________HasMap is the implementation 
 
         // Insert key-value pairs
         map.put(10, "John");
@@ -263,3 +264,54 @@ println(map.containsValue("Joe")); // true (O(n))
 
 Would you like me to also include a **"Build Your Own HashTable in Java" implementation** (like from scratch with
 `put()`, `get()`, `remove()`)?
+
+
+
+## HashMap Exercise
+
+### Find the First Non-Repeated Character
+
+A string is given like `a green apple` (don't worry about the casing) we need to define a function that returns the character that is listed only once.
+
+plan:
+
+1. have a hashMap/dictionary that stores each character as the `key` and the number of repetition as `value`
+2. iterate over the given string
+3.   check the existence of the current character in the hashMap
+4.      if exist: increase it's repetition count by 1
+5.      else add it to the hashMap and set it's repetition count to 1
+6. iterate over the hashMap and return the key that has the smallest repetition count
+
+
+```java
+
+public class CharFinder {
+    public char findFirstNonRepeatingChar(String str) {
+        Map<Character, Integer> map = new HashMap<>();
+        var chars = str.toCharArray();
+        for (var ch : chars) {
+//            if (map.containsKey(ch)){
+//                var count = map.get(ch);
+//                map.put(ch, count + 1);
+//            }
+//            else{
+//                map.put(ch, 1);
+//            }
+// ---------------- the if/else statement above can be written as following ------------------
+            var count = map.containsKey(ch) ? map.get(ch) : 0;
+            map.put(ch, count + 1);
+
+        }
+        for (var item : chars) {
+            if (map.get(item) == 1) {
+                return item;
+            }
+        }
+
+        return Character.MIN_VALUE; 
+
+    }
+}
+```
+
+the `Character.MIN_VALUE` is The constant `Character.MIN_VALUE` is a predefined constant in the class in Java. It represents the smallest possible value of the `char` data type, which is effectively the **null character** (`'\u0000'` or Unicode value 0). `Character`

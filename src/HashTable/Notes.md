@@ -55,6 +55,19 @@ Value:      -   -   -  "apple"
 3. **Retrieve Value**
    To retrieve `"apple"`, compute `hash("apple") → 4` and directly fetch from index `4`.
 
+Example:
+
+We want to store a list of employees:
+
+1. employeeNumber is given to the hash function.
+2. The hash function returns the index telling the hash table where to store the value.
+3. The value is stored at the index.
+
+Note: the **hash function** is deterministic, so the same key always maps to the same index.
+
+4. To retrieve the value, we compute the hash function again and fetch from the index.
+
+![Screenshot (28).png](../../Screenshot%20%2828%29.png))
 ---
 
 ## 3️⃣ Hash Functions
@@ -64,53 +77,6 @@ A **hash function**:
 * Produces the same output for the same input.
 * Spreads keys evenly across the table (avoids clustering).
 * Is fast to compute.
-
-Example:
-
-```java
-int index = Math.abs(key.hashCode()) % tableSize;
-```
-
----
-
-## 4️⃣ Collisions
-
-A **collision** occurs when two keys hash to the same index:
-
-```
-hash("apple") → 4  
-hash("grape") → 4 (collision!)
-```
-
-### 🛠 Collision Handling Methods:
-
-1. **Separate Chaining (Linked List)**
-   Each index stores a **list of key-value pairs**:
-
-   ```
-   Index 4 → [ ("apple", value), ("grape", value) ]
-   ```
-
-2. **Open Addressing**
-   If an index is taken, find the next empty slot.
-
-    * **Linear Probing**: Check next slots one by one.
-    * **Quadratic Probing**: Jump ahead by squares (1², 2², 3²…).
-    * **Double Hashing**: Use a second hash function to find a new slot.
-
----
-
-## 5️⃣ Load Factor
-
-The **load factor** measures how full the hash table is:
-
-```
-Load Factor = (Number of Entries) / (Size of Table)
-```
-
-When the load factor exceeds a threshold (default 0.75 in Java), the table **resizes (rehashes)**.
-
----
 
 ## 6️⃣ Hash Table Implementations in Java
 
@@ -143,7 +109,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
-      //Map is the interface___________HasMap is the implementation 
+        //Map is the interface___________HasMap is the implementation 
 
         // Insert key-value pairs
         map.put(10, "John");
@@ -202,8 +168,11 @@ println(entry.getValue());// value only
 
 ## 9️⃣ `containsKey()` vs `containsValue()`
 
-* `containsKey(key)` → **O(1)** (uses hashing).
-* `containsValue(value)` → **O(n)** (linear search, no hashing for values).
+* `containsKey(key)` → **O(1)** (uses hashing). because when we pass a key to the `containsKey()` method, the hashmap
+  will use the hash function to find the index of the key, then it would quickly find the value in the array and return
+  the result.
+* `containsValue(value)` → **O(n)** (linear search, no hashing for values). because when we pass a value to the
+  `containsValue()` method, the hashmap will iterate through the whole array to find the value.
 
 ---
 
@@ -265,23 +234,21 @@ println(map.containsValue("Joe")); // true (O(n))
 Would you like me to also include a **"Build Your Own HashTable in Java" implementation** (like from scratch with
 `put()`, `get()`, `remove()`)?
 
-
-
 ## HashMap Exercise
 
 ### Find the First Non-Repeated Character
 
-A string is given like `a green apple` (don't worry about the casing) we need to define a function that returns the character that is listed only once.
+A string is given like `a green apple` (don't worry about the casing) we need to define a function that returns the
+character that is listed only once.
 
 plan:
 
 1. have a hashMap/dictionary that stores each character as the `key` and the number of repetition as `value`
 2. iterate over the given string
-3.   check the existence of the current character in the hashMap
+3. check the existence of the current character in the hashMap
 4.      if exist: increase it's repetition count by 1
 5.      else add it to the hashMap and set it's repetition count to 1
 6. iterate over the hashMap and return the key that has the smallest repetition count
-
 
 ```java
 
@@ -308,10 +275,133 @@ public class CharFinder {
             }
         }
 
-        return Character.MIN_VALUE; 
+        return Character.MIN_VALUE;
 
     }
 }
 ```
 
-the `Character.MIN_VALUE` is The constant `Character.MIN_VALUE` is a predefined constant in the class in Java. It represents the smallest possible value of the `char` data type, which is effectively the **null character** (`'\u0000'` or Unicode value 0). `Character`
+the `Character.MIN_VALUE` is The constant `Character.MIN_VALUE` is a predefined constant in the class in Java. It
+represents the smallest possible value of the `char` data type, which is effectively the **null character** (`'\u0000'`
+or Unicode value 0). `Character`
+
+## Set
+
+Good morning! ☕ Let’s treat **Set** like that one friend who refuses duplicates in their life. In Data Structures and Algorithms (DSA), a **Set** is a collection of *unique elements* where the **order doesn’t necessarily matter** (depends on implementation).
+
+---
+
+## **1. What is a Set in DSA terms?**
+
+* **No duplicates** – if you try to insert an existing element, it won’t be added again.
+* **No guaranteed order** (unless you pick a specific implementation that maintains one).
+* **Fast operations** – insertion, deletion, and lookup are usually O(1) on average with hash-based sets.
+
+### Real-world analogy:
+
+Think of it like a guest list — you can’t write the same guest twice. If someone is already invited, writing their name again does nothing.
+
+---
+
+## **2. Types of Set in Java**
+
+Java provides several implementations in `java.util`:
+
+1. **HashSet** – unordered, uses hashing (fast, O(1) average).
+2. **LinkedHashSet** – preserves insertion order (still O(1) average).
+3. **TreeSet** – keeps elements sorted using a binary search tree (O(log n)).
+
+---
+
+## **3. Common Operations**
+
+Here are the key operations you’ll use (DSA flavor):
+
+* **add(element)** → Insert an item.
+* **remove(element)** → Delete an item.
+* **contains(element)** → Check if item exists.
+* **size()** → Get number of unique elements.
+* **isEmpty()** → Check if empty.
+* **clear()** → Remove everything.
+* **Iteration** → Loop through all elements.
+
+---
+
+## **4. Java Example (HashSet)**
+
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetDemo {
+    public static void main(String[] args) {
+        Set<Integer> numbers = new HashSet<>();
+
+        // Add elements
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(20); // duplicate, will be ignored
+
+        System.out.println("Set: " + numbers); // Output may be [20, 10, 30] (no order)
+        
+        // Check if element exists
+        System.out.println("Contains 20? " + numbers.contains(20)); // true
+
+        // Remove element
+        numbers.remove(10);
+        System.out.println("After removal: " + numbers);
+
+        // Size
+        System.out.println("Size of set: " + numbers.size());
+
+        // Iterate through elements
+        for (int num : numbers) {
+            System.out.println("Value: " + num);
+        }
+    }
+}
+```
+
+---
+
+## **5. When to Use a Set in DSA**
+
+* **Remove duplicates automatically** (e.g., unique usernames).
+* **Fast lookups** (e.g., checking if an item is in a collection).
+* **Performing set operations** (union, intersection, difference).
+* **Avoiding index management** (you don’t need to worry about positions like in arrays).
+
+---
+
+## **6. Quick DSA Example – Finding Unique Elements**
+
+Suppose you want to remove duplicates from an array:
+
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniqueExample {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 2, 1, 4};
+        Set<Integer> unique = new HashSet<>();
+
+        for (int num : arr) {
+            unique.add(num); // duplicates ignored automatically
+        }
+
+        System.out.println("Unique elements: " + unique);
+    }
+}
+```
+
+---
+
+## **7. Key Points to Remember**
+
+* **HashSet → O(1)** average for add/remove/contains (unordered).
+* **TreeSet → O(log n)** with sorted order.
+* **LinkedHashSet → O(1)** with predictable insertion order.
+* **No indexing!** You can’t access by position like in an array or list.
+

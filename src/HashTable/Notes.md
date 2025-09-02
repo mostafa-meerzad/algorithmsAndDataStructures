@@ -287,7 +287,9 @@ or Unicode value 0). `Character`
 
 ## Set
 
-Good morning! ☕ Let’s treat **Set** like that one friend who refuses duplicates in their life. In Data Structures and Algorithms (DSA), a **Set** is a collection of *unique elements* where the **order doesn’t necessarily matter** (depends on implementation).
+Good morning! ☕ Let’s treat **Set** like that one friend who refuses duplicates in their life. In Data Structures and
+Algorithms (DSA), a **Set** is a collection of *unique elements* where the **order doesn’t necessarily matter** (depends
+on implementation).
 
 ---
 
@@ -299,7 +301,8 @@ Good morning! ☕ Let’s treat **Set** like that one friend who refuses duplica
 
 ### Real-world analogy:
 
-Think of it like a guest list — you can’t write the same guest twice. If someone is already invited, writing their name again does nothing.
+Think of it like a guest list — you can’t write the same guest twice. If someone is already invited, writing their name
+again does nothing.
 
 ---
 
@@ -344,7 +347,7 @@ public class SetDemo {
         numbers.add(20); // duplicate, will be ignored
 
         System.out.println("Set: " + numbers); // Output may be [20, 10, 30] (no order)
-        
+
         // Check if element exists
         System.out.println("Contains 20? " + numbers.contains(20)); // true
 
@@ -405,3 +408,86 @@ public class UniqueExample {
 * **LinkedHashSet → O(1)** with predictable insertion order.
 * **No indexing!** You can’t access by position like in an array or list.
 
+## exercise find the first repeated character
+
+Great question! Your intuition about using a hashtable (in Java, typically a `HashMap<Character, Integer>`) is **exactly
+right for counting frequencies**, but frequency alone doesn’t immediately give you the **first repeated character**
+—because you’d only know counts after you finish iterating, which loses the "first occurrence" order.
+
+Let’s break this down step by step and solve it *efficiently* in **one pass**:
+
+---
+
+## **Goal**
+
+Given `"a green apple"`, return the **first character that appears more than once** → `'e'`.
+
+---
+
+## **Key Idea**
+
+Instead of just counting frequencies, we check *as we go* whether we’ve seen a character before:
+
+1. Use a `HashSet<Character>` to store characters we've **already seen**.
+2. Iterate through the string **character by character**:
+
+    * If the character is **not in the set**, add it.
+    * If the character **is already in the set**, this is the **first repeated character** → return immediately.
+
+This works because you're processing characters **in order**. The *first time* you hit a duplicate, that duplicate is
+the first repeated character.
+
+---
+
+## **Code in Java**
+
+```java
+import java.util.HashSet;
+
+public class Main {
+    public static void main(String[] args) {
+        String str = "a green apple";
+        Character result = findFirstRepeatedChar(str);
+        System.out.println(result); // Output: e
+    }
+
+    public static Character findFirstRepeatedChar(String str) {
+        HashSet<Character> seen = new HashSet<>();
+
+        for (char ch : str.toCharArray()) {
+            if (ch == ' ') continue; // optional: skip spaces
+
+            if (seen.contains(ch)) {
+                return ch; // first repeated character
+            }
+            seen.add(ch);
+        }
+        return null; // no repeated character found
+    }
+}
+```
+
+---
+
+## **Why not just use counts first?**
+
+* If you just count occurrences in one loop and then scan again to find the first char with count > 1, it’s **two passes
+  **.
+* The HashSet method does it in **one pass** and stops as soon as it finds a duplicate—more efficient.
+
+---
+
+### Quick mental trace with `"a green apple"`:
+
+1. `a` → not seen → add `a`
+2. ` ` (space) → skip
+3. `g` → add
+4. `r` → add
+5. `e` → add
+6. `e` (again) → already in set → **return 'e'**
+
+`Character.MIN_VALUE` in Java is a public static final field within the java.lang.Character class. It represents the
+minimum value that a char primitive data type or a java.lang.Character object can hold.
+This minimum value corresponds to the Unicode character \u0000, which is the null character. In decimal representation,
+this value is 0. Since the char data type in Java is a 16-bit unsigned Unicode character, \u0000 is the smallest
+possible value it can represent.

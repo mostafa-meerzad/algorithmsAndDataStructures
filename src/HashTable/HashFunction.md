@@ -186,4 +186,10 @@ bucket[3] → ["cat" -> "tac"]
 Do you want me to **draw this visually** (like buckets and arrows) so it really sticks? Or should I show **how to
 implement a full hash table with chaining step by step** in Java like Mosh does?
 
-en addressing
+## Collisions
+
+A collision is when two keys map to the same index.
+to solve, there are two ways:
+
+1. **chaining**: which each cell in the array is pointing to a linked-list (the values are not directly stored in the array! instead they are stored in a linked-list) so when we have a collision, we just add the new value to the end of the linked-list.
+2. **open addressing**: which is to find the next open spot in the array
